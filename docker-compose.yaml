@@ -1,0 +1,14 @@
+services:
+  my-codex-node:
+    image: codexstorage/nim-codex:latest
+    environment:
+      - CODEX_API_BINDADDR=0.0.0.0
+      # - CODEX_BOOTSTRAP_NODE=bootsprhere
+      # - CODEX_PERSISTENCE=true
+      # - CODEX_ETH_PROVIDER=${CODEX_ETH_PROVIDER:-ws://localhost:8545}
+      # - CODEX_ETH_ACCOUNT=${CODEX_ETH_ACCOUNT}
+      # - CODEX_MARKETPLACE_ADDRESS=${CODEX_MARKETPLACE_ADDRESS:-0x59b670e9fA9D0A427751Af201D676719a970857b}
+    ports:
+      - 8080:8080/tcp # REST API
+    volumes:
+      - ./datadir:/datadir:z
