@@ -1,14 +1,37 @@
+
 services:
+  codex-frontend:
+    image: thatbenbierens/codex-frontend:initial
+    ports:
+      - 3000:80
+    environment:
+     - CODEX_URL=urlhere
+    depends_on:
+      - my-codex-node
+
   my-codex-node:
     image: codexstorage/nim-codex:latest
-    environment:
-      - CODEX_API_BINDADDR=0.0.0.0
-      # - CODEX_BOOTSTRAP_NODE=bootsprhere
-      # - CODEX_PERSISTENCE=true
-      # - CODEX_ETH_PROVIDER=${CODEX_ETH_PROVIDER:-ws://localhost:8545}
-      # - CODEX_ETH_ACCOUNT=${CODEX_ETH_ACCOUNT}
-      # - CODEX_MARKETPLACE_ADDRESS=${CODEX_MARKETPLACE_ADDRESS:-0x59b670e9fA9D0A427751Af201D676719a970857b}
     ports:
-      - 8080:8080/tcp # REST API
+      - 8080:8080/tcp # API port
+      - 8090:8090/udp # Discovery port
+      - 8070:8070/tcp # Listen port
+    environment:
+      - CODEX_LOG_LEVEL=Trace
+      - CODEX_API_BINDADDR=0.0.0.0
+      - CODEX_LISTEN_ADDRS=/ip4/0.0.0.0/tcp/8070
+      - CODEX_BOOTSTRAP_NODE=spr:CiUIAhIhAjWRnAkZNe1RMo5eYtJwQctMX7SECrxwy6qqYmdqDAmUEgIDARo8CicAJQgCEiECNZGcCRk17VEyjl5i0nBBy0xftIQKvHDLqqpiZ2oMCZQQ_bH4qQYaCwoJBJ_f8IKRAk4qKkYwRAIgRHwAKFLPX5fD-FBvOaaAH2wqmJorneiaTvUxLU40Fl8CIGhInG38fafO3ZhqLjg8aice2KTtKdG5HaadD_ciGcLF
+      # - CODEX_PERSISTENCE=true
+      # - CODEX_ETH_PROVIDER=ws://codex-testnet-geth-node:8546
+      # - CODEX_MARKETPLACE_ADDRESS=0x92F09Aa59DcCb892a9f5406DDd9c0b98f02EA57e
+      # - PRIV_KEY=9721fb80cf32275ce80ae41927130adc767d435dbb1d80114dac2ef2d7c951f0
     volumes:
-      - ./datadir:/datadir:z
+      - ./datadir:/datadir
+    depends_on:
+      - codex-testnet-geth-node
+
+  codex-testnet-geth-node:
+    image: codexstorage/dist-tests-geth:latest
+    ports:
+      - 8546:8546
+    environment:
+      - GETH_ARGS=--http.addr 0.0.0.0 --http.port 8545 --port 30303 --discovery.port 30303 --bootnodes enode://5db8dc8028481a409c3f7a7bcd138926ada0b8b412f7df51e4fd34f67327a5a9d522367af4c0d4fdbc745b81702f88e1ade6cc50ea54997b7d069a5e6082734d@159.223.240.130:20041 --ipcdisable --syncmode full --authrpc.port 8551 --ws --ws.addr 0.0.0.0 --ws.port 8546
