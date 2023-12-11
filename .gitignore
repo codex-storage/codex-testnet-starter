@@ -1,0 +1,7 @@
+# Docker compose
+*.env
+*.env.*
+
+# Datadir
+*-data
+
