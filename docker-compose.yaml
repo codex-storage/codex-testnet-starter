@@ -27,8 +27,8 @@ services:
       - CODEX_ETH_PROVIDER=ws://geth:8546
       - CODEX_PERSISTENCE=true
       - CODEX_VALIDATOR=false
-      - CODEX_MARKETPLACE_ADDRESS=0x92F09Aa59DcCb892a9f5406DDd9c0b98f02EA57e
       - PRIV_KEY=<YOUR-KEY-HERE>
+      - CODEX_MARKETPLACE_ADDRESS=0xf388aCEac24e4d63F6BB22AA5B1978538F9e7936
     ports:
       - 8080:8080/tcp # API port
       - 8090:8090/udp # Discovery port
@@ -47,7 +47,7 @@ services:
       - ./geth-data:/data
       - ./genesis.json:/data/genesis.json
 
-  # Get
+  # Geth
   geth:
     image: ethereum/client-go:v1.13.5
     environment:
