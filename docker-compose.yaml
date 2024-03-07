@@ -15,13 +15,19 @@ services:
   codex:
     image: codexstorage/nim-codex:latest-dist-tests
     pull_policy: always
+    command:
+      - codex
+      - --bootstrap-node=spr:CiUIAhIhAiJvIcA_ZwPZ9ugVKDbmqwhJZaig5zKyLiuaicRcCGqLEgIDARo8CicAJQgCEiECIm8hwD9nA9n26BUoNuarCEllqKDnMrIuK5qJxFwIaosQtcKdqwYaCwoJBJ_f8zKRAnU6KkcwRQIhAKMczlNPHUIkSw0y_Vi2OTimLQ85DmtUEYcu3-t5EUHTAiAvl9vOs9kDGUUpZwsKpNHUGwauxJFSq1SOqi08OrtycQ
+      - --bootstrap-node=spr:CiUIAhIhAyUvcPkKoGE7-gh84RmKIPHJPdsX5Ugm_IHVJgF-Mmu_EgIDARo8CicAJQgCEiEDJS9w-QqgYTv6CHzhGYog8ck92xflSCb8gdUmAX4ya78Q2aWZqwYaCwoJBES39Q2RAnVOKkYwRAIgaCDDf4pbehpubwi7ikQtSs5lgorPTVIDO1N1rKyoDYECIG-xVpaKL5wVGG9WlIbDmjKNHMhV2MibPr7kaWlGaSsr
+      - --bootstrap-node=spr:CiUIAhIhA6_j28xa--PvvOUxH10wKEm9feXEKJIK3Z9JQ5xXgSD9EgIDARo8CicAJQgCEiEDr-PbzFr74--85TEfXTAoSb195cQokgrdn0lDnFeBIP0Q_aSZqwYaCwoJBK6Kf1-RAnVEKkcwRQIhALKgBZMCEj7HgUurhln83vaprOB3fKJ-Ys3uBVjc6uErAiAogqNyb8GGmeZYDUouoymll-f4436H1USbpV8VKhW1-Q
+      - --bootstrap-node=spr:CiUIAhIhA7E4DEMer8nUOIUSaNPA4z6x0n9Xaknd28Cfw9S2-cCeEgIDARo8CicAJQgCEiEDsTgMQx6vydQ4hRJo08DjPrHSf1dqSd3bwJ_D1Lb5wJ4Qk5-cqwYaCwoJBEDhWZORAnVYKkYwRAIgDo5waIP4k16ygllsQ_F2MkB-k4bNVcKAF0KigACXyGECIF0_F0bKS1rNJ6GQju7p2eiIGGn-WTc9wNriNsXkVvyW
+      - --bootstrap-node=spr:CiUIAhIhAzZn3JmJab46BNjadVnLNQKbhnN3eYxwqpteKYY32SbOEgIDARo8CicAJQgCEiEDNmfcmYlpvjoE2Np1Wcs1ApuGc3d5jHCqm14phjfZJs4QmKWcqwYaCwoJBKpA-TaRAnViKkYwRAIgOBKHCLY_n9Du7YOPPKYgCjUU8qmXMZ9JTo03cgInhkICIGpH78Ip6JQdLeBL7D5XWY82DaBN7tsWUlxV-rHpGiJQ
     environment:
       - CODEX_LOG_LEVEL=TRACE;warn:discv5,providers,manager,cache;warn:libp2p,multistream,switch,transport,tcptransport,semaphore,asyncstreamwrapper,lpstream,mplex,mplexchannel,noise,bufferstream,mplexcoder,secure,chronosstream,connection,connmanager,websock,ws-session
       - CODEX_API_PORT=8080
       - CODEX_API_BINDADDR=0.0.0.0
       - CODEX_LISTEN_ADDRS=/ip4/0.0.0.0/tcp/8070
       - CODEX_DISC_PORT=8090
-      - CODEX_BOOTSTRAP_NODE=spr:CiUIAhIhAlrt4nrtZA6BtsyuUS2lJoZQQaRjItOCvdbNBWAwjpXNEgIDARo8CicAJQgCEiECWu3ieu1kDoG2zK5RLaUmhlBBpGMi04K91s0FYDCOlc0QpunsqgYaCwoJBJ_f5lWRAnVOKkcwRQIhANP3hAuwJpazzbj6kLlB2QNfAMeL6mbaRDBigZHVzJvdAiBuyNcpvulJ7O8D4enYhASY05UfxBLUl0VMHJptwWv6KQ
       - NAT_PUBLIC_IP_AUTO=https://ip.codex.storage
       - NAT_IP_AUTO=false
       - CODEX_ETH_PROVIDER=ws://geth:8546
