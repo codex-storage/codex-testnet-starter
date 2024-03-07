@@ -42,7 +42,8 @@ services:
     volumes:
       - ./codex-data:/datadir
     depends_on:
-      - geth
+      geth:
+        condition: service_healthy
 
   # Geth init
   geth-init:
@@ -82,3 +83,8 @@ services:
       - ./geth-data:/data
     depends_on:
       - geth-init
+    healthcheck:
+      test: ["CMD", "sleep", "3"]
+      interval: 3s
+      timeout: 3s
+      retries: 1
