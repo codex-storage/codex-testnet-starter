@@ -1,22 +1,13 @@
 version: '3.9'
 services:
-  # Codex Frontend
-  codex-frontend:
-    image: codexstorage/codex-frontend:latest
-    pull_policy: always
-    environment:
-      - codex_url=http://codex:8080
-    ports:
-      - 3000:80
-    depends_on:
-      - codex
-
   # Codex Node
   codex:
-    image: codexstorage/nim-codex:latest-dist-tests
+    image: codexstorage/nim-codex:sha-cd280d4-dist-tests
     pull_policy: always
     command:
       - codex
+      - persistence
+      - prover
       - --bootstrap-node=spr:CiUIAhIhAiJvIcA_ZwPZ9ugVKDbmqwhJZaig5zKyLiuaicRcCGqLEgIDARo8CicAJQgCEiECIm8hwD9nA9n26BUoNuarCEllqKDnMrIuK5qJxFwIaosQtcKdqwYaCwoJBJ_f8zKRAnU6KkcwRQIhAKMczlNPHUIkSw0y_Vi2OTimLQ85DmtUEYcu3-t5EUHTAiAvl9vOs9kDGUUpZwsKpNHUGwauxJFSq1SOqi08OrtycQ
       - --bootstrap-node=spr:CiUIAhIhAyUvcPkKoGE7-gh84RmKIPHJPdsX5Ugm_IHVJgF-Mmu_EgIDARo8CicAJQgCEiEDJS9w-QqgYTv6CHzhGYog8ck92xflSCb8gdUmAX4ya78Q2aWZqwYaCwoJBES39Q2RAnVOKkYwRAIgaCDDf4pbehpubwi7ikQtSs5lgorPTVIDO1N1rKyoDYECIG-xVpaKL5wVGG9WlIbDmjKNHMhV2MibPr7kaWlGaSsr
       - --bootstrap-node=spr:CiUIAhIhA6_j28xa--PvvOUxH10wKEm9feXEKJIK3Z9JQ5xXgSD9EgIDARo8CicAJQgCEiEDr-PbzFr74--85TEfXTAoSb195cQokgrdn0lDnFeBIP0Q_aSZqwYaCwoJBK6Kf1-RAnVEKkcwRQIhALKgBZMCEj7HgUurhln83vaprOB3fKJ-Ys3uBVjc6uErAiAogqNyb8GGmeZYDUouoymll-f4436H1USbpV8VKhW1-Q
@@ -31,7 +22,6 @@ services:
       - NAT_PUBLIC_IP_AUTO=https://ip.codex.storage
       - NAT_IP_AUTO=false
       - CODEX_ETH_PROVIDER=ws://geth:8546
-      - CODEX_PERSISTENCE=true
       - CODEX_VALIDATOR=false
       - PRIV_KEY=<YOUR-KEY-HERE>
       - CODEX_MARKETPLACE_ADDRESS=0xf388aCEac24e4d63F6BB22AA5B1978538F9e7936
@@ -53,6 +43,11 @@ services:
     volumes:
       - ./geth-data:/data
       - ./genesis.json:/data/genesis.json
+    healthcheck:
+      test: ["CMD", "sleep", "5"]
+      interval: 5s
+      timeout: 5s
+      retries: 1
 
   # Geth
   geth:
