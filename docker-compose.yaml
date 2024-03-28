@@ -46,7 +46,7 @@ services:
     healthcheck:
       test: ["CMD", "sleep", "5"]
       interval: 5s
-      timeout: 5s
+      timeout: 30s
       retries: 1
 
   # Geth
@@ -81,5 +81,5 @@ services:
     healthcheck:
       test: ["CMD", "sleep", "15"]
       interval: 15s
-      timeout: 15s
+      timeout: 60s
       retries: 1
