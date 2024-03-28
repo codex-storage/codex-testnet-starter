@@ -2,7 +2,7 @@ version: '3.9'
 services:
   # Codex Node
   codex:
-    image: codexstorage/nim-codex:sha-cd280d4-dist-tests
+    image: codexstorage/nim-codex:sha-61ea685-dist-tests
     pull_policy: always
     command:
       - codex
@@ -24,7 +24,7 @@ services:
       - CODEX_ETH_PROVIDER=ws://geth:8546
       - CODEX_VALIDATOR=false
       - PRIV_KEY=<YOUR-KEY-HERE>
-      - CODEX_MARKETPLACE_ADDRESS=0xf388aCEac24e4d63F6BB22AA5B1978538F9e7936
+      - CODEX_MARKETPLACE_ADDRESS=0x6411d9c4f8d16Fe6Dc632660a2d196BEE0Aa4546
     ports:
       - 8080:8080/tcp # API port
       - 8090:8090/udp # Discovery port
