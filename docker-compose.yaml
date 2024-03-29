@@ -3,7 +3,7 @@ services:
   # Codex Node
   codex:
     image: codexstorage/nim-codex:sha-61ea685-dist-tests
-    pull_policy: always
+    container_name: codex
     command:
       - codex
       - persistence
@@ -19,49 +19,53 @@ services:
       - CODEX_API_BINDADDR=0.0.0.0
       - CODEX_LISTEN_ADDRS=/ip4/0.0.0.0/tcp/8070
       - CODEX_DISC_PORT=8090
-      - NAT_PUBLIC_IP_AUTO=https://ip.codex.storage
-      - NAT_IP_AUTO=false
-      - CODEX_ETH_PROVIDER=ws://geth:8546
+      - NAT_PUBLIC_IP_AUTO=${NAT_PUBLIC_IP_AUTO:-https://ip.codex.storage}
+      - CODEX_ETH_PROVIDER=${CODEX_ETH_PROVIDER:-ws://geth:8546}
       - CODEX_VALIDATOR=false
-      - PRIV_KEY=<YOUR-KEY-HERE>
+      - PRIV_KEY=${PRIV_KEY}
       - CODEX_MARKETPLACE_ADDRESS=0x6411d9c4f8d16Fe6Dc632660a2d196BEE0Aa4546
     ports:
-      - 8080:8080/tcp # API port
-      - 8090:8090/udp # Discovery port
-      - 8070:8070/tcp # Listen port
+      - 8080:8080/tcp # API
+      - 8090:8090/udp # Discovery
+      - 8070:8070/tcp # Transport
     volumes:
       - ./codex-data:/datadir
+    logging:
+      driver: json-file
+      options:
+        max-size: 100m
+        max-file: 5
+    networks:
+      - codex
     depends_on:
       geth:
         condition: service_healthy
 
   # Geth init
   geth-init:
-    image: ethereum/client-go:v1.13.5
+    image: ethereum/client-go:v1.13.14
+    container_name: geth-init
     entrypoint: /bin/sh
     command: -c '[ -d /data/geth/chaindata ] && echo "Genesis block already created" || geth init --datadir /data /data/genesis.json'
     volumes:
       - ./geth-data:/data
       - ./genesis.json:/data/genesis.json
-    healthcheck:
-      test: ["CMD", "sleep", "5"]
-      interval: 5s
-      timeout: 30s
-      retries: 1
+    networks:
+      - codex
 
   # Geth
   geth:
-    image: ethereum/client-go:v1.13.5
+    image: ethereum/client-go:v1.13.14
+    container_name: geth
     environment:
       - GETH_DATADIR=/data
       - GETH_NETWORKID=789987
-      - GETH_SYNCMODE=full
-
+      - GETH_SYNCMODE=snap
+      # - GETH_NAT=extip:1.1.1.1
       - GETH_NAT=auto
       - GETH_DISCOVERY_PORT=8547
       - GETH_PORT=8548
-
-      - GETH_VERBOSITY=3
+      - GETH_VERBOSITY=${GETH_VERBOSITY:-3}
       - GETH_HTTP=true
       - GETH_HTTP_PORT=8545
       - GETH_HTTP_ADDR=0.0.0.0
@@ -73,13 +77,26 @@ services:
       - 8545:8545/tcp # HTTP-RPC
       - 8546:8546/tcp # WS-RPC
       - 8547:8547/udp # Discovery
-      - 8548:8548/tcp # Listen
+      - 8548:8548/tcp # Transport
     volumes:
       - ./geth-data:/data
+    logging:
+      driver: json-file
+      options:
+        max-size: 100m
+        max-file: 5
     depends_on:
       - geth-init
+    networks:
+      - codex
     healthcheck:
       test: ["CMD", "sleep", "15"]
-      interval: 15s
+      interval: 10s
       timeout: 60s
-      retries: 1
+      retries: 100
+      start_period: 5m
+
+networks:
+  codex:
+    name: codex
+    driver: bridge
