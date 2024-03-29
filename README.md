@@ -1,31 +1,140 @@
 # Codex Testnet Starter
 Hit the ground running with Codex.
 
-## Overview
+1. [Overview](#overview)
+2. [How to start](#how-to-start)
+3. [How to get ready](#how-to-get-ready)
+4. [How to use](#how-to-use)
+5. [How to stop](#how-to-stop)
+6. [How to stop and delete everything](#how-to-stop-and-delete-everything)
+7. [Troubleshooting](#troubleshooting)
+
+
+## [Overview](#codex-testnet-starter)
 ![Overview](/docs/overview.png)
 Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on your machine. You always have the option to build and run Codex from sources [Here](https://github.com/codex-storage/nim-codex/).
 
-1. [How to start](#how-to-start)
-1. [How to get ready](#how-to-get-ready)
-1. [How to use](#how-to-use)
-1. [How to stop](#how-to-stop)
-1. [How to stop and delete everything](#how-to-stop-and-delete-everything)
-1. [Troubleshooting](#troubleshooting)
-
 
 ## [How to start](#codex-testnet-starter)
-- Create an Ethereum public/private key pair.
-- Have Docker installed.
-- Have Discord installed.
-- Clone this repo.
-- Define variables:
-  ```shell
-  export PRIV_KEY=9721fb80cf32275ce80ae41927130adc767d435dbb1d80114dac2ef2d7c951f0
+ 1. [Have Docker with compose installed](https://docs.docker.com/engine/install/)
 
-  # export CODEX_ETH_PROVIDER=https://rpc.testnet.codex.storage
-  # export GETH_VERBOSITY=4
-  ```
-- `docker-compose up -d`
+ 2. Clone this repo
+    ```shell
+    git clone https://github.com/codex-storage/codex-testnet-starter && cd codex-testnet-starter
+    ```
+
+ 3. Create an Ethereum public/private key pair
+    <details>
+    <summary>Use metamask</summary>
+
+     1. [Accounts and Addresses](https://support.metamask.io/hc/en-us/sections/4471975962907-Accounts-and-Addresses)
+     2. [How to export an account's private key](https://support.metamask.io/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key)
+    </details>
+    <details>
+    <summary>Use Python code</summary>
+
+    1. Create a venv
+        ```shell
+        pip3 install virtualenv
+
+        venv=codex-eth-key
+        mkdir $venv && cd $venv
+
+        python3 -m venv env
+        source env/bin/activate
+        ```
+
+    2. Install required packages
+        ```shell
+        pip3 install web3
+        ```
+
+    3. Create a script
+        ```shell
+        vi eth-keys.py
+        ```
+        ```python
+        from eth_account import Account
+
+        def generate_ethereum_keypair():
+            # Generate a new Ethereum account
+            account = Account.create()
+
+            # Get the private key
+            private_key = account._private_key.hex()
+
+            # Get the public key (Ethereum address)
+            public_key = account.address
+
+            return private_key, public_key
+
+        # Generate the Ethereum key pair
+        private_key, public_key = generate_ethereum_keypair()
+
+        # Print the keys
+        print("Private Key:", private_key)
+        print("Public Key (Ethereum Address):", public_key)
+        ```
+
+      4. Generate the keys
+          ```shell
+          python3 eth-keys.py
+          ```
+      5. Cleanup
+         ```shell
+         deactivate
+         cd .. && rm -rf $venv
+         ```
+    </details>
+    <details>
+    <summary>Use Docker</summary>
+
+    ```shell
+    # Generate keystore
+    docker \
+      run --rm -it \
+      -v ./geth-account:/data \
+      ethereum/client-go \
+      --datadir /data account new
+
+    # Set keystore
+    keystore=$(find  geth-account -name "UTC--*" -exec basename {} \;)
+
+    # Get private key
+    docker run --rm \
+      -v ./geth-account/keystore:/keystore \
+      gochain/web3 \
+      account extract \
+      --keyfile /keystore/$keystore
+      # --password password
+      ```
+      </details>
+
+    ```
+    # Example
+    Private key: 0xacec4df7549199708a9f66b151aea7bf41b4d30bd325b96b26f017246226e1a3
+    Public address: 0x1C408C8572ce7d5E79a3a6D353e5FC2E8E2c49ce
+    ```
+
+ 4. Define variables
+    ```shell
+    export PRIV_KEY=0xacec4df7549199708a9f66b151aea7bf41b4d30bd325b96b26f017246226e1a3
+
+    # export CODEX_LISTEN_ADDRS=/ip4/0.0.0.0/tcp/8070
+    # export CODEX_DISC_PORT=8090
+    # export CODEX_ETH_PROVIDER=https://rpc.testnet.codex.storage
+    # export CODEX_LOG_LEVEL=TRACE
+    #
+    # export GETH_DISCOVERY_PORT=8547
+    # export GETH_PORT=8548
+    # export GETH_NAT=extip:1.1.1.1
+    # export GETH_VERBOSITY=3
+    ```
+
+ 5. Run local nodes
+    ```shell
+    docker-compose up
+    ```
 
 
 ## [How to get ready](#codex-testnet-starter)
@@ -34,7 +143,7 @@ When starting the Testnet Starter for the first time, (or restarting after a lon
 - Codex should automatically wait until Geth is ready. However, in some situations Codex will attempt to start too soon and promptly crash. This is a known issue. When this happens, please manually restart Codex's container when your Geth node is synced.
 
 Before you can use the marketplace functionality of Codex, you will need to obtain some tokens in the testnet.
-1. Join the Codex Discord server: [Here](LINK PENDING)
+1. Join the [Codex Discord server](https://discord.gg/codex-storage)
 1. Find the appropriate testnet channel.
 1. Give your public key to the bot using `set` command.
 ![Bot-Set](/docs/bot-set.png)
