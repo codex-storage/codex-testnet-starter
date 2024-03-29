@@ -14,6 +14,7 @@ services:
       - --bootstrap-node=spr:CiUIAhIhA7E4DEMer8nUOIUSaNPA4z6x0n9Xaknd28Cfw9S2-cCeEgIDARo8CicAJQgCEiEDsTgMQx6vydQ4hRJo08DjPrHSf1dqSd3bwJ_D1Lb5wJ4Qk5-cqwYaCwoJBEDhWZORAnVYKkYwRAIgDo5waIP4k16ygllsQ_F2MkB-k4bNVcKAF0KigACXyGECIF0_F0bKS1rNJ6GQju7p2eiIGGn-WTc9wNriNsXkVvyW
       - --bootstrap-node=spr:CiUIAhIhAzZn3JmJab46BNjadVnLNQKbhnN3eYxwqpteKYY32SbOEgIDARo8CicAJQgCEiEDNmfcmYlpvjoE2Np1Wcs1ApuGc3d5jHCqm14phjfZJs4QmKWcqwYaCwoJBKpA-TaRAnViKkYwRAIgOBKHCLY_n9Du7YOPPKYgCjUU8qmXMZ9JTo03cgInhkICIGpH78Ip6JQdLeBL7D5XWY82DaBN7tsWUlxV-rHpGiJQ
     environment:
+      - CODEX_DATA_DIR=/data
       - CODEX_LOG_LEVEL=TRACE;warn:discv5,providers,manager,cache;warn:libp2p,multistream,switch,transport,tcptransport,semaphore,asyncstreamwrapper,lpstream,mplex,mplexchannel,noise,bufferstream,mplexcoder,secure,chronosstream,connection,connmanager,websock,ws-session
       - CODEX_API_PORT=8080
       - CODEX_API_BINDADDR=0.0.0.0
@@ -29,7 +30,7 @@ services:
       - 8090:8090/udp # Discovery
       - 8070:8070/tcp # Transport
     volumes:
-      - ./codex-data:/datadir
+      - ./codex-data:/data
     logging:
       driver: json-file
       options:
