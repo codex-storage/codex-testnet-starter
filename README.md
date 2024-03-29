@@ -14,7 +14,7 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
 
 
 ## [How to start](#codex-testnet-starter)
-- Create a public/private key pair.
+- Create an Ethereum public/private key pair.
 - Have Docker installed.
 - Have Discord installed.
 - Clone this repo.
@@ -31,7 +31,7 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
 ## [How to get ready](#codex-testnet-starter)
 When starting the Testnet Starter for the first time, (or restarting after a long pause) please keep in mind:
 - Your local Geth node will need time to sync.
-- Codex should automatically wait until Geth is ready. However, in some situations Codex will attempt to start and promptly crash too soon. This is a known issue. When this happens, please manually restart Codex's container when your Geth node is synced.
+- Codex should automatically wait until Geth is ready. However, in some situations Codex will attempt to start too soon and promptly crash. This is a known issue. When this happens, please manually restart Codex's container when your Geth node is synced.
 
 Before you can use the marketplace functionality of Codex, you will need to obtain some tokens in the testnet.
 1. Join the Codex Discord server: [Here](LINK PENDING)

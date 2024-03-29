@@ -42,7 +42,7 @@ When you have a CID of data you want to download, you can use the following:
 
 ```shell
 curl --request GET \
-  --url http://localhost:8080/api/codex/v1/data/<<<CID HERE>>>/network
+  --url http://localhost:8080/api/codex/v1/data/{CID HERE}/network
 ```
 
 Note that Codex does not store content-type or extension information.
@@ -77,7 +77,7 @@ To purchase storag space from the network, first you must upload your file. Once
 
 ```shell
 curl --request POST \
-  --url http://localhost:8080/api/codex/v1/storage/request/<<<CID HERE>>> \
+  --url http://localhost:8080/api/codex/v1/storage/request/{CID HERE} \
   --header 'Content-Type: application/json' \
   --data '{
   "duration": "3600",
@@ -98,6 +98,6 @@ On successful, this request will return a Purchase-ID.
 Using a Purchase-ID, you can check the status of your request-for-storage contract:
 ```shell
 curl --request GET \
-  --url http://localhost:8080/api/codex/v1/storage/purchases/<<<PURCHASE ID HERE>>>
+  --url http://localhost:8080/api/codex/v1/storage/purchases/{PURCHASE ID HERE}
 ```
 
