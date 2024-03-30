@@ -40,8 +40,24 @@ services:
     networks:
       - codex
     depends_on:
-      geth:
+      check:
         condition: service_healthy
+
+  # Geth check
+  check:
+    image: curlimages/curl
+    container_name: check
+    command: sleep infinity
+    depends_on:
+      - geth
+    networks:
+      - codex
+    healthcheck:
+      test: |
+        curl -s -m 2 http://geth:8545 -XPOST -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' | grep '"result":false'
+      interval: 5s
+      timeout: 3s
+      retries: 1000
 
   # Geth init
   geth-init:
@@ -66,10 +82,11 @@ services:
       - GETH_NAT=${GETH_NAT:-auto}
       - GETH_DISCOVERY_PORT=${GETH_DISCOVERY_PORT:-8547}
       - GETH_PORT=${GETH_PORT:-8548}
-      - GETH_VERBOSITY=${GETH_VERBOSITY:-2}
+      - GETH_VERBOSITY=${GETH_VERBOSITY:-3}
       - GETH_HTTP=true
       - GETH_HTTP_PORT=8545
       - GETH_HTTP_ADDR=0.0.0.0
+      - GETH_HTTP_VHOSTS=*
       - GETH_WS=true
       - GETH_WS_PORT=8546
       - GETH_WS_ADDR=0.0.0.0
@@ -90,12 +107,6 @@ services:
       - geth-init
     networks:
       - codex
-    healthcheck:
-      test: ["CMD", "sleep", "15"]
-      interval: 10s
-      timeout: 60s
-      retries: 100
-      start_period: 1m
 
 networks:
   codex:
