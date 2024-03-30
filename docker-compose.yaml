@@ -40,13 +40,13 @@ services:
     networks:
       - codex
     depends_on:
-      check:
+      geth-check:
         condition: service_healthy
 
   # Geth check
-  check:
+  geth-check:
     image: curlimages/curl
-    container_name: check
+    container_name: geth-check
     command: sleep infinity
     depends_on:
       - geth
