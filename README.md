@@ -14,6 +14,14 @@ Hit the ground running with Codex.
 ![Overview](/docs/overview.png)
 Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on your machine. You always have the option to build and run Codex from sources [Here](https://github.com/codex-storage/nim-codex/).
 
+### Links
+ - Codex Website - [codex.storage](https://codex.storage)
+ - Codex Whitepaper - [codex.storage](https://codex.storage)
+ - Codex API - [api.codex.storage](https://api.codex.storage)
+ - Codex Discord - [discord.gg/codex-storage](https://discord.gg/codex-storage)
+ - Block explorer - [explorer.testnet.codex.storage](https://explorer.testnet.codex.storage)
+ - Web wallet - [wallet.testnet.codex.storage](https://wallet.testnet.codex.storage)
+
 
 ## [How to start](#codex-testnet-starter)
  1. [Have Docker with compose installed](https://docs.docker.com/engine/install/)
@@ -23,7 +31,7 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
     git clone https://github.com/codex-storage/codex-testnet-starter && cd codex-testnet-starter
     ```
 
- 3. Create an Ethereum public/private key pair
+ 3. Create an Ethereum public/private key pair using [web wallet](https://wallet.testnet.codex.storage) or consider other local methods
     <details>
     <summary>Use Docker</summary>
 
@@ -34,7 +42,7 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
     </details>
 
     <details>
-    <summary>Use metamask</summary>
+    <summary>Use MetaMask</summary>
 
     1. [Accounts and Addresses](https://support.metamask.io/hc/en-us/sections/4471975962907-Accounts-and-Addresses)
     2. [How to export an account's private key](https://support.metamask.io/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key)
@@ -133,15 +141,23 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
 ## [How to get ready](#codex-testnet-starter)
 When starting the Testnet Starter for the first time, (or restarting after a long pause) please keep in mind:
 - Your local Geth node will need time to sync.
-- Codex should automatically wait until Geth is ready. However, in some situations Codex will attempt to start too soon and promptly crash. This is a known issue. When this happens, please manually restart Codex's container when your Geth node is synced.
+- Geth checker will wait until Geth is in sync and only then Codex will start.
 
 Before you can use the marketplace functionality of Codex, you will need to obtain some tokens in the testnet.
 1. Join the [Codex Discord server](https://discord.gg/codex-storage)
-1. Find the appropriate testnet channel.
-1. Give your public key to the bot using `set` command.
-![Bot-Set](/docs/bot-set.png)
-1. Ask it politely to mint some tokens for you using `mint` command.
-![Bot-Mint](/docs/bot-mint.png)
+2. Find the appropriate testnet channel.
+3. Give your public key to the bot using `set` command.
+   <details>
+   <summary>example</summary>
+
+   ![Bot-Set](/docs/bot-set.png)
+   </details>
+4. Ask it politely to mint some tokens for you using `mint` command.
+   <details>
+   <summary>example</summary>
+
+   ![Bot-Mint](/docs/bot-mint.png)
+   </details>
 (It may or may not happen in the future that testnet participation will be rewarded automatically with Discord server roles.)
 
 
