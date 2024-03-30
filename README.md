@@ -25,35 +25,45 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
 
  3. Create an Ethereum public/private key pair
     <details>
+    <summary>Use Docker</summary>
+
+    ```shell
+    # Generate keypair
+    docker run --rm gochain/web3 account create
+    ```
+    </details>
+
+    <details>
     <summary>Use metamask</summary>
 
-     1. [Accounts and Addresses](https://support.metamask.io/hc/en-us/sections/4471975962907-Accounts-and-Addresses)
-     2. [How to export an account's private key](https://support.metamask.io/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key)
+    1. [Accounts and Addresses](https://support.metamask.io/hc/en-us/sections/4471975962907-Accounts-and-Addresses)
+    2. [How to export an account's private key](https://support.metamask.io/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key)
     </details>
+
     <details>
     <summary>Use Python code</summary>
 
     1. Create a venv
-        ```shell
-        pip3 install virtualenv
+       ```shell
+       pip3 install virtualenv
 
-        venv=codex-eth-key
-        mkdir $venv && cd $venv
+       venv=codex-eth-key
+       mkdir $venv && cd $venv
 
-        python3 -m venv env
-        source env/bin/activate
-        ```
+       python3 -m venv env
+       source env/bin/activate
+       ```
 
     2. Install required packages
-        ```shell
-        pip3 install web3
-        ```
+       ```shell
+       pip3 install web3
+       ```
 
     3. Create a script
-        ```shell
-        vi eth-keys.py
-        ```
-        ```python
+       ```shell
+       vi eth-keys.py
+       ```
+       ```python
         from eth_account import Account
 
         def generate_ethereum_keypair():
@@ -74,41 +84,18 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
         # Print the keys
         print("Private Key:", private_key)
         print("Public Key (Ethereum Address):", public_key)
-        ```
+       ```
 
-      4. Generate the keys
-          ```shell
-          python3 eth-keys.py
-          ```
-      5. Cleanup
-         ```shell
-         deactivate
-         cd .. && rm -rf $venv
-         ```
+    4. Generate the keys
+       ```shell
+       python3 eth-keys.py
+       ```
+    5. Cleanup
+       ```shell
+       deactivate
+       cd .. && rm -rf $venv
+       ```
     </details>
-    <details>
-    <summary>Use Docker</summary>
-
-    ```shell
-    # Generate keystore
-    docker \
-      run --rm -it \
-      -v ./geth-account:/data \
-      ethereum/client-go \
-      --datadir /data account new
-
-    # Set keystore
-    keystore=$(find  geth-account -name "UTC--*" -exec basename {} \;)
-
-    # Get private key
-    docker run --rm \
-      -v ./geth-account/keystore:/keystore \
-      gochain/web3 \
-      account extract \
-      --keyfile /keystore/$keystore
-      # --password password
-      ```
-      </details>
 
     ```
     # Example
@@ -119,9 +106,9 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
  4. Define variables
     ```shell
     export PRIV_KEY=0xacec4df7549199708a9f66b151aea7bf41b4d30bd325b96b26f017246226e1a3
+    export CODEX_LISTEN_ADDRS=/ip4/0.0.0.0/tcp/8070
+    export CODEX_DISC_PORT=8090
 
-    # export CODEX_LISTEN_ADDRS=/ip4/0.0.0.0/tcp/8070
-    # export CODEX_DISC_PORT=8090
     # export CODEX_ETH_PROVIDER=https://rpc.testnet.codex.storage
     # export CODEX_LOG_LEVEL=TRACE
     #
@@ -134,6 +121,12 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
  5. Run local nodes
     ```shell
     docker-compose up
+    ```
+
+ 6. Setup port forwarding on your router for Codex, based on defined values
+    ```
+    TCP - CODEX_LISTEN_ADDRS=/ip4/0.0.0.0/tcp/8070
+    UDP - CODEX_DISC_PORT=8090
     ```
 
 
