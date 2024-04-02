@@ -91,6 +91,8 @@ curl --request POST \
 ```
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
 
+'Expiry' must be a Unix timestamp in the future, but not further than 'duration' seconds from now. You can use [this](https://www.unixtimestamp.com) to generate one.
+
 On successful, this request will return a Purchase-ID.
 
 
