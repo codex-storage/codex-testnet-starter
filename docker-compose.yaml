@@ -1,7 +1,7 @@
 services:
   # Codex Node
   codex:
-    image: codexstorage/nim-codex:sha-f2f1dd5-dist-tests
+    image: codexstorage/nim-codex:sha-1524803-dist-tests
     container_name: codex
     command:
       - codex
