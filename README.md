@@ -128,7 +128,7 @@ Using the Testnet Starter, you can run a (mostly preconfigured) Codex node on yo
 
  5. Run local nodes
     ```shell
-    docker-compose up
+    docker-compose up -d
     ```
 
  6. Setup port forwarding on your router for Codex, based on defined values
