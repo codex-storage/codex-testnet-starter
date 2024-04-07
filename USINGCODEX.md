@@ -46,7 +46,7 @@ export CID="..." # paste your CID from the previous step here between the quotes
 
 ```shell
 curl --request GET \
-  --url http://localhost:8080/api/codex/v1/data/${CID}/network
+  --url http://localhost:8080/api/codex/v1/data/$CID/network
 ```
 
 Note that Codex does not store content-type or extension information.
@@ -84,20 +84,20 @@ First create two variables for the request:
 ```shell
 export CID="..." # paste your CID from the previous step here between the quotes
 export EXPIRY_TIME=$((1000 + $(date +%s))) # current time + 1000 seconds
-echo CID: ${CID}
-echo EXPIRY_TIME: ${EXPIRY_TIME}
+echo CID: $CID
+echo EXPIRY_TIME: $EXPIRY_TIME
 ```
 
 Next you can run:
 
 ```shell
-curl "http://localhost:8080/api/codex/v1/storage/request/${CID}" \
+curl "http://localhost:8080/api/codex/v1/storage/request/$CID" \
   --header 'Content-Type: application/json' \
   --data "{
     \"duration\": \"3600\",
     \"reward\": \"1\",
     \"proofProbability\": \"3\",
-    \"expiry\": \"${EXPIRY_TIME}\",
+    \"expiry\": \"$EXPIRY_TIME\",
     \"nodes\": 2,
     \"tolerance\": 1,
     \"collateral\": \"1\"
@@ -115,8 +115,15 @@ On successful, this request will return a Purchase-ID.
 
 ## View purchase status
 Using a Purchase-ID, you can check the status of your request-for-storage contract:
+
+```shell
+export PURCHASE_ID="..."
+```
+
+Then:
+
 ```shell
 curl --request GET \
-  --url http://localhost:8080/api/codex/v1/storage/purchases/{PURCHASE_ID_HERE}
+  --url http://localhost:8080/api/codex/v1/storage/purchases/$PURCHASE_ID
 ```
 
