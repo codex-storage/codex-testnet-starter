@@ -75,20 +75,30 @@ For descriptions of each parameter, please view the [Spec](https://github.com/co
 ## Purchase storage
 To purchase storag space from the network, first you must upload your file. Once you have the CID, use the following to create a request-for-storage contract.
 
+First create two variables for the request:
 ```shell
-curl --request POST \
-  --url http://localhost:8080/api/codex/v1/storage/request/{CID HERE} \
-  --header 'Content-Type: application/json' \
-  --data '{
-  "duration": "3600",
-  "reward": "1",
-  "proofProbability": "3",
-  "nodes": 2,
-  "tolerance": 1,
-  "collateral": "5",
-  "expiry": "1711703406"
-}'
+export CID="..." # paste your CID from the previous step here between the quotes
+export EXPIRY_TIME=$((1000 + $(date +%s))) # current time + 1000 seconds
+echo CID: ${CID}
+echo EXPIRY_TIME: ${EXPIRY_TIME}
 ```
+
+Next you can run:
+
+```shell
+curl "http://localhost:8080/api/codex/v1/storage/request/${CID}" \
+  --header 'Content-Type: application/json' \
+  --data "{
+    \"duration\": \"3600\",
+    \"reward\": \"1\",
+    \"proofProbability\": \"3\",
+    \"expiry\": \"${EXPIRY_TIME}\",
+    \"nodes\": 2,
+    \"tolerance\": 1,
+    \"collateral\": \"1\"
+  }"
+```
+
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
 
 'Expiry' must be a Unix timestamp in the future, but not further than 'duration' seconds from now. You can use [this](https://www.unixtimestamp.com) to generate one.
