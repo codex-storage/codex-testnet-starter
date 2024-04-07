@@ -91,17 +91,18 @@ echo EXPIRY_TIME: $EXPIRY_TIME
 Next you can run:
 
 ```shell
-curl "http://localhost:8080/api/codex/v1/storage/request/$CID" \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "duration": "3600",
-    "reward": "1",
-    "proofProbability": "3",
-    "expiry": '"'${EXPIRY_TIME}'"',
-    "nodes": 2,
-    "tolerance": 1,
-    "collateral": "1"
-  }'
+curl --request POST \
+   --url "http://localhost:8080/api/codex/v1/storage/request/$CID" \
+   --header 'Content-Type: application/json' \
+   --data "{
+     \"duration\": \"3600\",
+     \"reward\": \"1\",
+     \"proofProbability\": \"3\",
+     \"expiry\": \"$EXPIRY_TIME\",
+     \"nodes\": 2,
+     \"tolerance\": 1,
+     \"collateral\": \"1\"
+  }"
 ```
 
 Note that the `\"` pieces are needed for the command to interperate properly.
