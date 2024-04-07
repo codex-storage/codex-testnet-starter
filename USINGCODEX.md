@@ -36,17 +36,22 @@ curl --request POST \
 
 On successful upload, you'll receive a CID. This can be used to download the file from any node in the network.
 
-
 ## Download a file
-When you have a CID of data you want to download, you can use the following:
+
+When you have a CID of data you want to download, you can use the following commands:
+
+```shell
+export CID="..." # paste your CID from the previous step here between the quotes
+```
 
 ```shell
 curl --request GET \
-  --url http://localhost:8080/api/codex/v1/data/{CID HERE}/network
+  --url http://localhost:8080/api/codex/v1/data/${CID}/network
 ```
 
 Note that Codex does not store content-type or extension information.
 
+If you get an error, run `echo ${CID}` to verify your CID is set properly.
 
 ## Local data
 You can view which datasets are currently being stored by your node.
@@ -99,6 +104,8 @@ curl "http://localhost:8080/api/codex/v1/storage/request/${CID}" \
   }"
 ```
 
+Note that the `\"` pieces are needed for the command to interperate properly.
+
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
 
 'Expiry' must be a Unix timestamp in the future, but not further than 'duration' seconds from now. You can use [this](https://www.unixtimestamp.com) to generate one.
@@ -110,6 +117,6 @@ On successful, this request will return a Purchase-ID.
 Using a Purchase-ID, you can check the status of your request-for-storage contract:
 ```shell
 curl --request GET \
-  --url http://localhost:8080/api/codex/v1/storage/purchases/{PURCHASE ID HERE}
+  --url http://localhost:8080/api/codex/v1/storage/purchases/{PURCHASE_ID_HERE}
 ```
 
