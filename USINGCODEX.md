@@ -92,20 +92,18 @@ Next you can run:
 
 ```shell
 curl --request POST \
-   --url "http://localhost:8080/api/codex/v1/storage/request/$CID" \
+   --url http://localhost:8080/api/codex/v1/storage/request/$CID \
    --header 'Content-Type: application/json' \
-   --data "{
-     \"duration\": \"3600\",
-     \"reward\": \"1\",
-     \"proofProbability\": \"3\",
-     \"expiry\": \"$EXPIRY_TIME\",
-     \"nodes\": 2,
-     \"tolerance\": 1,
-     \"collateral\": \"1\"
-  }"
+   --data '{
+    "duration": "3600",
+    "reward": "1",
+    "proofProbability": "3",
+    "expiry": "'${EXPIRY_TIME}'",
+    "nodes": 2,
+    "tolerance": 1,
+    "collateral": "1"
+  }'
 ```
-
-Note that the `\"` pieces are needed for the command to interperate properly.
 
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
 
