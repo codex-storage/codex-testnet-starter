@@ -144,7 +144,7 @@ When starting the Testnet Starter for the first time, (or restarting after a lon
 - Geth checker will wait until Geth is in sync and only then Codex will start.
 
 Before you can use the marketplace functionality of Codex, you will need to obtain some tokens in the Testnet.
-1. Use can use a web faucets
+1. Use web faucets
    - ETH - [faucet-eth.testnet.codex.storage](https://faucet-eth.testnet.codex.storage)
    - TST - [faucet-tst.testnet.codex.storage](https://faucet-tst.testnet.codex.storage/)
 
