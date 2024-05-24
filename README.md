@@ -143,22 +143,30 @@ When starting the Testnet Starter for the first time, (or restarting after a lon
 - Your local Geth node will need time to sync.
 - Geth checker will wait until Geth is in sync and only then Codex will start.
 
-Before you can use the marketplace functionality of Codex, you will need to obtain some tokens in the testnet.
-1. Join the [Codex Discord server](https://discord.gg/codex-storage)
-2. Find the appropriate testnet channel.
-3. Give your public key to the bot using `set` command.
-   <details>
-   <summary>example</summary>
+Before you can use the marketplace functionality of Codex, you will need to obtain some tokens in the Testnet.
+1. Use can use a web faucets
+   - ETH - [faucet-eth.testnet.codex.storage](https://faucet-eth.testnet.codex.storage)
+   - TST - [faucet-tst.testnet.codex.storage](https://faucet-tst.testnet.codex.storage/)
 
-   ![Bot-Set](/docs/bot-set.png)
-   </details>
-4. Ask it politely to mint some tokens for you using `mint` command.
+2. Or join the [Codex Discord server](https://discord.gg/codex-storage)
    <details>
-   <summary>example</summary>
+   <summary>Get tokens on Discord server faucet</summary>
 
-   ![Bot-Mint](/docs/bot-mint.png)
+   1. Find the `#bot` channel.
+   2. Give your public key to the bot using `set` command.
+      <details>
+      <summary>example</summary>
+
+      ![Bot-Set](/docs/bot-set.png)
+      </details>
+   3. Ask it politely to mint some tokens for you using `mint` command.
+      <details>
+      <summary>example</summary>
+
+      ![Bot-Mint](/docs/bot-mint.png)
+      </details>
+   (It may or may not happen in the future that testnet participation will be rewarded automatically with Discord server roles.)
    </details>
-(It may or may not happen in the future that testnet participation will be rewarded automatically with Discord server roles.)
 
 
 ## [How to use](#codex-testnet-starter)
