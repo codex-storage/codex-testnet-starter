@@ -83,9 +83,7 @@ To purchase storag space from the network, first you must upload your file. Once
 First create two variables for the request:
 ```shell
 export CID="..." # paste your CID from the previous step here between the quotes
-export EXPIRY_TIME=$((1000 + $(date +%s))) # current time + 1000 seconds
 echo CID: $CID
-echo EXPIRY_TIME: $EXPIRY_TIME
 ```
 
 Next you can run:
@@ -98,7 +96,7 @@ curl --request POST \
     "duration": "3600",
     "reward": "1",
     "proofProbability": "3",
-    "expiry": "'${EXPIRY_TIME}'",
+    "expiry": "300",
     "nodes": 2,
     "tolerance": 1,
     "collateral": "1"
@@ -106,8 +104,6 @@ curl --request POST \
 ```
 
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
-
-'Expiry' must be a Unix timestamp in the future, but not further than 'duration' seconds from now. You can use [this](https://www.unixtimestamp.com) to generate one.
 
 On successful, this request will return a Purchase-ID.
 
