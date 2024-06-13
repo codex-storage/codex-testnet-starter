@@ -1,5 +1,4 @@
 # Using Codex
-
 Codex's web-API is documented: [Here](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml)
 This document will show you several useful API calls.
 
@@ -16,10 +15,12 @@ This document will show you several useful API calls.
 
 ## Debug
 An easy way to check that your node is up and running is:
+
 ```shell
 curl --request GET \
   --url http://localhost:8080/api/codex/v1/debug/info
 ```
+
 This will return a JSON structure with plenty of information about your local node. It contains peer information that may be useful when troubleshooting connection issues.
 
 
@@ -36,8 +37,8 @@ curl --request POST \
 
 On successful upload, you'll receive a CID. This can be used to download the file from any node in the network.
 
-## Download a file
 
+## Download a file
 When you have a CID of data you want to download, you can use the following commands:
 
 ```shell
@@ -49,12 +50,12 @@ curl --request GET \
   --url http://localhost:8080/api/codex/v1/data/$CID/network
 ```
 
-Note that Codex does not store content-type or extension information.
+Note that Codex does not store content-type or extension information. If you get an error, run `echo ${CID}` to verify your CID is set properly.
 
-If you get an error, run `echo ${CID}` to verify your CID is set properly.
 
 ## Local data
 You can view which datasets are currently being stored by your node.
+
 ```shell
 curl --request GET \
   --url http://localhost:8080/api/codex/v1/data
@@ -62,7 +63,11 @@ curl --request GET \
 
 
 ## Create storage availability
+**Warning**
+Are you currently in a Codex workshop?! Yes: Please skip this step.
+
 In order to start selling storage space to the network, you must configure your node with the following command. Once configured, the node will monitor on-chain requests-for-storage and will automatically enter into contracts that meet these specifications.
+
 ```shell
 curl --request POST \
   --url http://localhost:8080/api/codex/v1/sales/availability \
@@ -74,13 +79,15 @@ curl --request POST \
 	"maxCollateral": "10"
   }'
 ```
+
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
 
 
 ## Purchase storage
-To purchase storag space from the network, first you must upload your file. Once you have the CID, use the following to create a request-for-storage contract.
+To purchase storag space from the network, first you must upload your data. Once you have the CID, use the following to create a request-for-storage.
 
-First create two variables for the request:
+Set your CID:
+
 ```shell
 export CID="..." # paste your CID from the previous step here between the quotes
 echo CID: $CID
@@ -122,3 +129,13 @@ curl --request GET \
   --url http://localhost:8080/api/codex/v1/storage/purchases/$PURCHASE_ID
 ```
 
+This will display state and error information for your purchase.
+| State     | Description                                                                             |
+|-----------|-----------------------------------------------------------------------------------------|
+| Pending   | Request is waiting for chain confirmation.                                              |
+| Submitted | Request is on-chain. Hosts may now attempt to download the data.                        |
+| Started   | Hosts have downloaded the data and provided proof-of-storage.                           |
+| Failed    | The request was started, but (too many) hosts failed to provide proof-of-storage on time. While the data may still be available in the network, for the purpose of the purchase it is considered lost. |
+| Finished  | The request was started successfully and the duration has elapsed.                      |
+| Expired   | (Not enough) hosts have submitted proof-of-storage before the request's expiry elapsed. |
+| Errored   | An unfortunate state of affairs. The 'error' field should tell you more.                |
