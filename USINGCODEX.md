@@ -102,7 +102,7 @@ curl --request POST \
    --data '{
     "duration": "3600",
     "reward": "1",
-    "proofProbability": "3",
+    "proofProbability": "5",
     "expiry": "300",
     "nodes": 2,
     "tolerance": 1,
