@@ -1,5 +1,5 @@
 LOCALIP=192.168.178.138
-BOOTSPR="spr:CiUIAhIhA7hDRTkU9Pb_Wt4qdoN_IsRGuDL6bucyvMqbE3F7UmFREgIDARo8CicAJQgCEiEDuENFORT09v9a3ip2g38ixEa4Mvpu5zK8ypsTcXtSYVEQ1uHFswYaCwoJBMCosoqRAh-aKkcwRQIhAKdz-V1ne8GB-QlUmXnA4_EO1WIisy6PPBJDzRRLn02UAiB4QmAVgBgJ94OxnrTo7c_zgsjDJXL_E0_KlBb2KaFzPw"
+BOOTSPR=$(curl http://localhost:8080/api/codex/v1/spr | cut -d '"' -f4)
 
 # Quota = 11 GB
 # Availability = 10 GB

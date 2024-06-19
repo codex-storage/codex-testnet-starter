@@ -10,4 +10,5 @@ LOCALIP="192.168.178.138"
 
 sleep 5
 
-curl http://localhost:8080/api/codex/v1/debug/info
+curl http://localhost:8080/api/codex/v1/debug/info > bootstrap.info
+
