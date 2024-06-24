@@ -1,4 +1,3 @@
-LOCALIP=192.168.178.138
 BOOTSPR=$(curl http://localhost:8080/api/codex/v1/spr | cut -d '"' -f4)
 
 # Quota = 11 GB

@@ -1,5 +1,3 @@
-set LOCALIP="192.168.178.138"
-
 start /b codex-v0.1.0-windows-amd64.exe ^
   --data-dir=data_bootstrap ^
   --nat=%LOCALIP% ^

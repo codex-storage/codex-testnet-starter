@@ -1,5 +1,4 @@
-set LOCALIP="192.168.178.138"
-set BOOTSPR="spr:CiUIAhIhAteA6IVIcN3egB_1rPz3HpFKVVO4emfRRcRzvyf0ES11EgIDARo8CicAJQgCEiEC14DohUhw3d6AH_Ws_PcekUpVU7h6Z9FFxHO_J_QRLXUQlcfKswYaCwoJBMCosquRAh-aKkcwRQIhAPzHOsoFmh96SeuFPzErNeck9C-vOkWp74HpddLmM4zLAiBwvbCZDaeMRkmVRVxh24J8OEGGuHFUTWPHAL8T7e8GyQ"
+set BOOTSPR="UPDATE ME FROM BOOTSTRAP NODE"
 
 start /b codex-v0.1.0-windows-amd64.exe ^
   --data-dir=data_client ^

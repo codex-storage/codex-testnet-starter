@@ -1,15 +1,15 @@
 # Workshop Setup
 With these instructions you can set up a Codex node on your machine, to use during the Brussels 2024 workshop. If you run into trouble and need help, ask a nearby Codexer!
 
-## Local network
-Switch to the workshop wifi:
-- SSID: `codex`
-- Password: `ethcc2024`
-
 ## Clone this repository
 ```
 git clone https://github.com/codex-storage/codex-testnet-starter.git
 ```
+
+## Local network
+Switch to the workshop wifi:
+- SSID: `codex`
+- Password: `ethcc2024`
 
 Open a terminal in the scripts folder for your platform:
 - `scripts/linux`
@@ -22,7 +22,7 @@ Run `download` script.
 ## Generate an Eth key-pair
 Run `generate` script.
 
-Keep your public key at hand. Update the file named `eth.key` with your private key. You may need to change the permissions for this file. See the README.md in your platform specific folder.
+Keep the generated address at hand. Update the file named `eth.key` with your private key. You may need to change the permissions for this file. See the README.md in your platform specific folder.
 
 ## Start Codex node
 Determine your local IP address. Use `ifconfig` or `ipconfig`, depending on your platform.
@@ -39,7 +39,7 @@ You can acquire tokens in one of two ways: Discord bot or faucet.
 ### Discord bot
  - Join the Codex discord server: https://discord.gg/codex-storage.
  - Go to the "bot" channel, in the category "codex-bot".
- - Use `/set` command to enter your public key.
+ - Use `/set` command to enter your generated address.
  - Use `/mint` command to receive some tokens.
 
 ### Faucet

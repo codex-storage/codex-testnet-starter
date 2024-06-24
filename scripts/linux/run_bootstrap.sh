@@ -1,5 +1,3 @@
-LOCALIP="192.168.178.138"
-
 ./codex-v0.1.0-linux-amd64 \
   --data-dir=data_bootstrap \
   --nat=${LOCALIP} \
