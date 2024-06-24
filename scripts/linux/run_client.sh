@@ -2,7 +2,7 @@ LOCALIP=192.168.178.138
 BOOTSPR=spr:CiUIAhIhAteA6IVIcN3egB_1rPz3HpFKVVO4emfRRcRzvyf0ES11EgIDARo8CicAJQgCEiEC14DohUhw3d6AH_Ws_PcekUpVU7h6Z9FFxHO_J_QRLXUQlcfKswYaCwoJBMCosquRAh-aKkcwRQIhAPzHOsoFmh96SeuFPzErNeck9C-vOkWp74HpddLmM4zLAiBwvbCZDaeMRkmVRVxh24J8OEGGuHFUTWPHAL8T7e8GyQ
 
 ./codex-v0.1.0-linux-amd64 \
-  --data-dir=data_bootstrap \
+  --data-dir=data_client \
   --storage-quota=11811160064 \
   --nat=${LOCALIP} \
   --api-port=8080 \

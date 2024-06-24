@@ -5,7 +5,7 @@ BOOTSPR=$(curl http://localhost:8080/api/codex/v1/spr | cut -d '"' -f4)
 # Availability = 10 GB
 
 ./codex-v0.1.0-prover-linux-amd64 \
-  --data-dir=data_storage \
+  --data-dir=data_host \
   --circuit-dir=circuit \
   --storage-quota=11811160064 \
   --nat=${LOCALIP} \

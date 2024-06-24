@@ -5,7 +5,7 @@ set BOOTSPR="UPDATE ME FROM BOOTSTRAP NODE"
 @REM Availability = 10 GB
 
 start /b codex-v0.1.0-prover-windows-amd64.exe ^
-  --data-dir=data_storage ^
+  --data-dir=data_host ^
   --circuit-dir=circuit ^
   --storage-quota=11811160064 ^
   --nat=%LOCALIP% ^
