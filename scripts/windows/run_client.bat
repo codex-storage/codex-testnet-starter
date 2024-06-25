@@ -1,4 +1,4 @@
-set BOOTSPR="UPDATE ME FROM BOOTSTRAP NODE"
+set BOOTSPR="spr:CiUIAhIhA7dVYM0xcaXtsXiHmXWN1l2Irg_82sMFC6UochS0u7x2EgIDARo8CicAJQgCEiEDt1VgzTFxpe2xeIeZdY3WXYiuD_zawwULpShyFLS7vHYQ09LpswYaCwoJBMCoWP2RAh-aKkcwRQIhAK38tfXLaKKudMeJq9BEH-uMW0CxJ3lRdY0f1BfuKzZ9AiAwMLy5LijnR0qtne9KgVkjxCQWsqmv3meN9B5rd7yXSA"
 
 start /b codex-v0.1.0-windows-amd64.exe ^
   --data-dir=data_client ^
