@@ -8,6 +8,9 @@ echo -n "${response}" | grep -o '"private":.*"' | cut -d'"' -f4 > ./eth.key
 echo -n "${response}" | grep -o '"address":.*"' | cut -d'"' -f4 > ./eth.address
 chmod 600 ./eth.key
 
+# Read the address from the file
+address=$(cat ./eth.address)
+
 echo " * your private key has been saved to ${PWD}/eth.key"
 echo " * your ethereum address has been saved to ${PWD}/eth.address"
 echo " * your ethereum address is 0x${address}"
