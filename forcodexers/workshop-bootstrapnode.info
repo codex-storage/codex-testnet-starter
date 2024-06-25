@@ -1,0 +1,25 @@
+{
+  "id": "16Uiu2HAmQzeU7BHbKhjXTG9bB9TqLgCwqcevawzAJ77DD8ckB9R7",
+  "addrs": [
+    "/ip4/0.0.0.0/tcp/8070"
+  ],
+  "repo": "data_bootstrap",
+  "spr": "spr:CiUIAhIhA7dVYM0xcaXtsXiHmXWN1l2Irg_82sMFC6UochS0u7x2EgIDARo8CicAJQgCEiEDt1VgzTFxpe2xeIeZdY3WXYiuD_zawwULpShyFLS7vHYQ09LpswYaCwoJBMCoWP2RAh-aKkcwRQIhAK38tfXLaKKudMeJq9BEH-uMW0CxJ3lRdY0f1BfuKzZ9AiAwMLy5LijnR0qtne9KgVkjxCQWsqmv3meN9B5rd7yXSA",
+  "announceAddresses": [
+    "/ip4/192.168.88.253/tcp/8070"
+  ],
+  "table": {
+    "localNode": {
+      "nodeId": "112e300c9f476344ee44f3f7fc0591efc3a5336efbb75c47b34980dba0ba2dc8",
+      "peerId": "16Uiu2HAmQzeU7BHbKhjXTG9bB9TqLgCwqcevawzAJ77DD8ckB9R7",
+      "record": "(envelope: (publicKey: secp256k1 key (04b75560cd3171a5edb1788799758dd65d88ae0ffcdac3050ba5287214b4bbbc76c3f4f4b72d51da49ec4c8b011c1415bf5e52da2bc76c90e5623f9af4530e5b2b), domain: \"libp2p-peer-record\", payloadType: @[3, 1], payload: @[10, 39, 0, 37, 8, 2, 18, 33, 3, 183, 85, 96, 205, 49, 113, 165, 237, 177, 120, 135, 153, 117, 141, 214, 93, 136, 174, 15, 252, 218, 195, 5, 11, 165, 40, 114, 20, 180, 187, 188, 118, 16, 213, 210, 233, 179, 6, 26, 11, 10, 9, 4, 192, 168, 88, 253, 145, 2, 31, 154], signature: 30440220776E456F7FFEEE3ED6D3FFCE39AF10D9665DC7DC1EA5E5B71407553B3947916C0220187C5932B93BBE0C3DF9E046127E8E5ABE6804AAB28888C5998184EED3E53E9B), data: (peerId: 16Uiu2HAmQzeU7BHbKhjXTG9bB9TqLgCwqcevawzAJ77DD8ckB9R7, seqNo: 1719298389, addresses: @[(address: /ip4/192.168.88.253/udp/8090)]))",
+      "address": "0.0.0.0:8090",
+      "seen": false
+    },
+    "nodes": []
+  },
+  "codex": {
+    "version": "v0.1.0",
+    "revision": "6e9bdf1"
+  }
+}
