@@ -1,21 +1,20 @@
 # Workshop Setup
 With these instructions you can set up a Codex node on your machine, to use during the workshop. If you run into trouble and need help, ask a nearby Codexer!
 
-## 1. Clone this repository
-```
-git clone https://github.com/codex-storage/codex-testnet-starter.git
-```
-
-## 2. Use the local network wifi
+## 1. Use the local network wifi
 Switch to the workshop wifi:
 - SSID: `codex`
 - Password: `ethcc2024`
+
+## 2. Clone this repository
+```
+git clone https://github.com/codex-storage/codex-testnet-starter.git
+```
 
 ## 3. Open a terminal
 Open a terminal in the `/scripts` folder:
 ```shell
 cd scripts
-chmod +x *.sh # make the scripts executable
 ```
 > #### 📢 **Windows users**<br>
 >If you are using a native Windows environment, and not a *nix-like environment
@@ -31,34 +30,29 @@ Run `download` script:
 Run `generate` script:
 ```shell
 ./generate.sh
-
-# Generating private key...
-#  * your private key has been saved to /Users/egonat/repos/codex-storage/codex-testnet-starter/scripts/eth.key
-#  * your ethereum address is 1b54dd8d3b45b419091821c7c47a36e014b8db79
 ```
-> #### 📢 **Don't lose your generated address**<br>
->Take note of the generated address in the output so you can use it to mint
-tokens later.
+ * Your private key will be saved to scripts/eth.key.
+ * Your ethereum address will be saved to scripts/eth.address.
+
+> #### 📢 **Don't lose your keys**<br>
+>If you lose your key and address, you can generate new ones. But the faucet and/or discord bot may refuse to give you new tokens for quite a while!
 
 ## 6. Start Codex node
 Run the `run_client` script:
 ```shell
 ./run_client.sh
-
-# LOCAL IP: 192.168.50.45
-# INF 2024-06-25 16:32:25.410+10:00 Creating a private key and saving it       tid=25484256
-# INF 2024-06-25 16:32:25.414+10:00 Discovery SPR initialized                  topics="discv5"
-# ...
 ```
 
-> #### 📢 **Check your IP**<br>
->Check that your `LOCAL IP` in the output is correct, and if not, re-run the script with
-the LOCALIP environment variable:
-> ```shell
-> LOCALIP=192.168.88.46 ./run_client.sh
-> ```
-> <br>
+Unix users may be required to install libgomp:
+```shell
+sudo apt-get install libgomp1
+```
 
+#### 📢 **Check your IP**<br>
+Check that your `LOCAL IP` in the output is correct, and if not, re-run the script with the LOCALIP environment variable:
+```shell
+LOCALIP=192.168.88.46 ./run_client.sh
+```
 
 ## 7. Acquire tokens
 You can acquire tokens in one of two ways: the testnet faucets or the Discord bot.
