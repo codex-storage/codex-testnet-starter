@@ -3,3 +3,4 @@ tar -xvzf codex-v0.1.0-linux-amd64.tar.gz
 
 chmod +x codex-v0.1.0-linux-amd64
 
+echo "Codex binary saved to ${PWD}/codex-v0.1.0-linux-amd64"
