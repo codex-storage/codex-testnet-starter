@@ -63,8 +63,9 @@ curl --request GET \
 
 
 ## Create storage availability
-**Warning**
-Are you currently in a Codex workshop?! Yes: Please skip this step.
+> #### 📢 **Warning**
+>Are you currently in a Codex workshop?! Yes: Please skip this step.
+>Proceed with 'Purchase storage'.
 
 In order to start selling storage space to the network, you must configure your node with the following command. Once configured, the node will monitor on-chain requests-for-storage and will automatically enter into contracts that meet these specifications.
 

@@ -1,3 +1,5 @@
+# Start script for storage node on local network NUC
+
 BOOTSPR=$(curl http://localhost:8078/api/codex/v1/spr | cut -d '"' -f4)
 
 # Quota = 11 GB
@@ -7,7 +9,7 @@ BOOTSPR=$(curl http://localhost:8078/api/codex/v1/spr | cut -d '"' -f4)
   --data-dir=data_host \
   --circuit-dir=circuit \
   --storage-quota=11811160064 \
-  --nat=${LOCALIP} \
+  --nat=192.168.88.253 \
   --api-port=8180 \
   --disc-port=8190 \
   --listen-addrs=/ip4/0.0.0.0/tcp/8170 \

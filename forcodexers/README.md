@@ -7,10 +7,11 @@ Notes for the Codex team members who will be running the workshop.
 
 ## Workshop Checklist
 On-site, before the workshop starts:
- - [ ] Check Menti code and QT code in slides
+ - [ ] Check Menti code and QR code in slides
  - [ ] Start local wifi network
  - [ ] Check wifi credentials in slides
  - [ ] Check internet access on wifi
  - [ ] Start bootstrap node on NUC
+ - [ ] Start serve in /codex/v0.1.0
  - [ ] Check bootstrap node SPR against SPR stored in workshop-bootstrapnode.info. If changed: UPDATE scripts in this repository quickly!
  - [ ] Start host node on NUC
