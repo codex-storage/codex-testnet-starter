@@ -51,11 +51,11 @@ Run the `run_client` script:
 # ...
 ```
 
-> #### 📢 **Don't lose your generated address**<br>
+> #### 📢 **Check your IP**<br>
 >Check that your `LOCAL IP` in the output is correct, and if not, re-run the script with
-the LOCALfIP environment variable:
+the LOCALIP environment variable:
 > ```shell
-> LOCALIP=192.168.50.46 ./run_client.sh
+> LOCALIP=192.168.88.46 ./run_client.sh
 > ```
 > <br>
 
