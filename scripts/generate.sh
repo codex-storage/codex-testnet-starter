@@ -9,4 +9,4 @@ address=$(echo -n "${response}" | grep -o '"address":.*"' | cut -d'"' -f4)
 chmod 600 ./eth.key
 
 echo " * your private key has been saved to ${PWD}/eth.key"
-echo " * your ethereum address is ${address}"
+echo " * your ethereum address is 0x${address}"
