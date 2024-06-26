@@ -22,7 +22,7 @@ if [ ! -f eth.key ]; then
 fi
 
 # Set variables
-VERSION="v0.1.0"
+VERSION="v0.1.1"
 OS=$(get_os)
 ARCH=$(get_arch)
 DATA_DIR="data_client"

@@ -18,7 +18,7 @@ if not exist eth.key (
 )
 
 :: Set variables
-set "VERSION=v0.1.0"
+set "VERSION=v0.1.1"
 set "OS=windows"
 call :get_arch ARCH
 set "DATA_DIR=data_client"

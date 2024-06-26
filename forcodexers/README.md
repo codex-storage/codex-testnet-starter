@@ -12,6 +12,6 @@ On-site, before the workshop starts:
  - [ ] Check wifi credentials in slides
  - [ ] Check internet access on wifi
  - [ ] Start bootstrap node on NUC
- - [ ] Start serve in /codex/v0.1.0
+ - [ ] Start serve in /codex/v0.1.1
  - [ ] Check bootstrap node SPR against SPR stored in workshop-bootstrapnode.info. If changed: UPDATE scripts in this repository quickly!
  - [ ] Start host node on NUC
