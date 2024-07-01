@@ -9,24 +9,19 @@ Switch to the workshop wifi:
 ## 2. Clone this repository
 ```
 git clone https://github.com/codex-storage/codex-testnet-starter.git
-```
-
-## 3. Open a terminal
-Open a terminal in the `/scripts` folder:
-```shell
-cd scripts
+cd codex-testnet-starter/scripts
 ```
 > #### 📢 **Windows users**<br>
 >If you are using a native Windows environment, and not a *nix-like environment
 >(eg CYGWIN/MINGW/MSYS/MINGW), use the `scripts/windows` directory.
 
-## 4. Download Codex
+## 3. Download Codex
 Run `download` script:
 ```shell
 ./download.sh
 ```
 
-## 5. Generate an ETH key-pair
+## 4. Generate an ETH key-pair
 Run `generate` script:
 ```shell
 ./generate.sh
@@ -37,7 +32,7 @@ Run `generate` script:
 > #### 📢 **Don't lose your keys**<br>
 >If you lose your key and address, you can generate new ones. But the faucet and/or discord bot may refuse to give you new tokens for quite a while!
 
-## 6. Start Codex node
+## 5. Start Codex node
 Run the `run_client` script:
 ```shell
 ./run_client.sh
@@ -54,7 +49,7 @@ Check that your `LOCAL IP` in the output is correct, and if not, re-run the scri
 LOCALIP=192.168.88.46 ./run_client.sh
 ```
 
-## 7. Acquire tokens
+## 6. Acquire tokens
 You can acquire tokens in one of two ways: the testnet faucets or the Discord bot.
 
 ### Faucets
@@ -68,6 +63,6 @@ You will need both ETH and TST to use Codex:
  - Use `/set` command to enter your generated address.
  - Use `/mint` command to receive some tokens.
 
-## 8. Use Codex
+## 7. Use Codex
 Setup complete! 🥳 You can now proceed to use your Codex node. Follow the
 [instructions](./USINGCODEX.md) 🐇

@@ -17,8 +17,7 @@ This document will show you several useful API calls.
 An easy way to check that your node is up and running is:
 
 ```shell
-curl --request GET \
-  --url http://localhost:8080/api/codex/v1/debug/info
+curl http://localhost:8080/api/codex/v1/debug/info
 ```
 
 This will return a JSON structure with plenty of information about your local node. It contains peer information that may be useful when troubleshooting connection issues.
@@ -42,13 +41,14 @@ On successful upload, you'll receive a CID. This can be used to download the fil
 When you have a CID of data you want to download, you can use the following commands:
 
 ```shell
-export CID="..." # paste your CID from the previous step here between the quotes
+CID="..." # paste your CID from the previous step here between the quotes
 ```
 
 ```shell
-curl --request GET \
-  --url http://localhost:8080/api/codex/v1/data/$CID/network
+curl -o "${CID}.png" "http://localhost:8080/api/codex/v1/data/${CID}/network"
 ```
+> #### 📢 **Note**
+>NOTE: Use the file type of the image uploaded in the previous step
 
 Note that Codex does not store content-type or extension information. If you get an error, run `echo ${CID}` to verify your CID is set properly.
 
@@ -57,10 +57,8 @@ Note that Codex does not store content-type or extension information. If you get
 You can view which datasets are currently being stored by your node.
 
 ```shell
-curl --request GET \
-  --url http://localhost:8080/api/codex/v1/data
+curl http://localhost:8080/api/codex/v1/data
 ```
-
 
 ## Create storage availability
 > #### 📢 **Warning**
@@ -90,7 +88,7 @@ To purchase storag space from the network, first you must upload your data. Once
 Set your CID:
 
 ```shell
-export CID="..." # paste your CID from the previous step here between the quotes
+CID="..." # paste your CID from the previous step here between the quotes
 echo CID: $CID
 ```
 
@@ -120,14 +118,13 @@ On successful, this request will return a Purchase-ID.
 Using a Purchase-ID, you can check the status of your request-for-storage contract:
 
 ```shell
-export PURCHASE_ID="..."
+PURCHASE_ID="..."
 ```
 
 Then:
 
 ```shell
-curl --request GET \
-  --url http://localhost:8080/api/codex/v1/storage/purchases/$PURCHASE_ID
+curl "http://localhost:8080/api/codex/v1/storage/purchases/${PURCHASE_ID}"
 ```
 
 This will display state and error information for your purchase.
