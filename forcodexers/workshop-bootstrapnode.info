@@ -1,18 +1,18 @@
 {
-  "id": "16Uiu2HAmQzeU7BHbKhjXTG9bB9TqLgCwqcevawzAJ77DD8ckB9R7",
+  "id": "16Uiu2HAmMj45j2Y81mFoThQmtwjmW32DzTMd9tFcUcTrhrrGHtxw",
   "addrs": [
     "/ip4/0.0.0.0/tcp/8070"
   ],
   "repo": "data_bootstrap",
-  "spr": "spr:CiUIAhIhA7dVYM0xcaXtsXiHmXWN1l2Irg_82sMFC6UochS0u7x2EgIDARo8CicAJQgCEiEDt1VgzTFxpe2xeIeZdY3WXYiuD_zawwULpShyFLS7vHYQ09LpswYaCwoJBMCoWP2RAh-aKkcwRQIhAK38tfXLaKKudMeJq9BEH-uMW0CxJ3lRdY0f1BfuKzZ9AiAwMLy5LijnR0qtne9KgVkjxCQWsqmv3meN9B5rd7yXSA",
+  "spr": "spr:CiUIAhIhA4bDuZcAmHjxteBfi1fMZ3XQbhIAkAoFJDj6VK9xmDQoEgIDARo8CicAJQgCEiEDhsO5lwCYePG14F-LV8xnddBuEgCQCgUkOPpUr3GYNCgQsrCJtAYaCwoJBMCoWP2RAh-aKkcwRQIhAIYaV9SBGR1Z0Q9lblZn70f4G5mL1089WEee-g_o-LZTAiAlVPiPtFN3WfH6WcqH2c-NWEGHV7y-8xsZdmy7y_gTlw",
   "announceAddresses": [
     "/ip4/192.168.88.253/tcp/8070"
   ],
   "table": {
     "localNode": {
-      "nodeId": "112e300c9f476344ee44f3f7fc0591efc3a5336efbb75c47b34980dba0ba2dc8",
-      "peerId": "16Uiu2HAmQzeU7BHbKhjXTG9bB9TqLgCwqcevawzAJ77DD8ckB9R7",
-      "record": "(envelope: (publicKey: secp256k1 key (04b75560cd3171a5edb1788799758dd65d88ae0ffcdac3050ba5287214b4bbbc76c3f4f4b72d51da49ec4c8b011c1415bf5e52da2bc76c90e5623f9af4530e5b2b), domain: \"libp2p-peer-record\", payloadType: @[3, 1], payload: @[10, 39, 0, 37, 8, 2, 18, 33, 3, 183, 85, 96, 205, 49, 113, 165, 237, 177, 120, 135, 153, 117, 141, 214, 93, 136, 174, 15, 252, 218, 195, 5, 11, 165, 40, 114, 20, 180, 187, 188, 118, 16, 213, 210, 233, 179, 6, 26, 11, 10, 9, 4, 192, 168, 88, 253, 145, 2, 31, 154], signature: 30440220776E456F7FFEEE3ED6D3FFCE39AF10D9665DC7DC1EA5E5B71407553B3947916C0220187C5932B93BBE0C3DF9E046127E8E5ABE6804AAB28888C5998184EED3E53E9B), data: (peerId: 16Uiu2HAmQzeU7BHbKhjXTG9bB9TqLgCwqcevawzAJ77DD8ckB9R7, seqNo: 1719298389, addresses: @[(address: /ip4/192.168.88.253/udp/8090)]))",
+      "nodeId": "557f71ecc73d7e1e519311aa86f3cd37c45ff207462065713307726f506f15b8",
+      "peerId": "16Uiu2HAmMj45j2Y81mFoThQmtwjmW32DzTMd9tFcUcTrhrrGHtxw",
+      "record": "(envelope: (publicKey: secp256k1 key (0486c3b997009878f1b5e05f8b57cc6775d06e1200900a052438fa54af719834285e04451195187cea65ccc1721c15af823e03691e67303b7e9dcd0cd1850a517f), domain: \"libp2p-peer-record\", payloadType: @[3, 1], payload: @[10, 39, 0, 37, 8, 2, 18, 33, 3, 134, 195, 185, 151, 0, 152, 120, 241, 181, 224, 95, 139, 87, 204, 103, 117, 208, 110, 18, 0, 144, 10, 5, 36, 56, 250, 84, 175, 113, 152, 52, 40, 16, 180, 176, 137, 180, 6, 26, 11, 10, 9, 4, 192, 168, 88, 253, 145, 2, 31, 154], signature: 3045022100F3EC2A2AA9EAB353061DF17C00E73D5F59B59C6199939671C337D7626BEA8E2302207C455AFDF911633AC4088F2E2777AF68AB6BF309BB0659C164D6880A1F6221F7), data: (peerId: 16Uiu2HAmMj45j2Y81mFoThQmtwjmW32DzTMd9tFcUcTrhrrGHtxw, seqNo: 1719818292, addresses: @[(address: /ip4/192.168.88.253/udp/8090)]))",
       "address": "0.0.0.0:8090",
       "seen": false
     },
@@ -20,6 +20,6 @@
   },
   "codex": {
     "version": "v0.1.1",
-    "revision": "6e9bdf1"
+    "revision": "15ff87a"
   }
 }
