@@ -1,6 +1,6 @@
 # Start script for bootstrap node on local network NUC
 
-./codex-v0.1.1-linux-amd64 \
+./codex-v0.1.3-linux-amd64 \
   --data-dir=data_bootstrap \
   --nat=192.168.88.253 \
   --api-port=8078 \

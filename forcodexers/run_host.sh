@@ -5,7 +5,7 @@ BOOTSPR=$(curl http://localhost:8078/api/codex/v1/spr | cut -d '"' -f4)
 # Quota = 11 GB
 # Availability = 10 GB
 
-./codex-prover-v0.1.1-linux-amd64 \
+./codex-prover-v0.1.3-linux-amd64 \
   --data-dir=data_host \
   --circuit-dir=circuit \
   --storage-quota=11811160064 \
