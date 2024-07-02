@@ -9,7 +9,7 @@ call :get_arch ARCH
 set "ARCHIVE_EXT=.zip"
 set "EXE_EXT=.exe"
 set "VERSION=v0.1.3"
-set "BASE_URL=http://192.168.88.253:8080"
+set "BASE_URL=https://github.com/codex-storage/nim-codex/releases/download/%VERSION%"
 set "EXTRACT_DIR=.\"
 set "BINARY_NAMES=codex"
 
@@ -23,7 +23,6 @@ for %%B in (%BINARY_NAMES%) do (
     powershell -Command "& {Invoke-WebRequest -Uri '!DOWNLOAD_URL!' -OutFile '!FILE_NAME!'}"
     if errorlevel 1 (
         echo Download failed for !FILE_NAME!
-        echo Try download-online.bat instead
         exit /b 1
     )
 
@@ -31,7 +30,6 @@ for %%B in (%BINARY_NAMES%) do (
     powershell -Command "& {Invoke-WebRequest -Uri '!CHECKSUM_URL!' -OutFile '!FILE_NAME!.sha256'}"
     if errorlevel 1 (
         echo Checksum download failed for !FILE_NAME!
-        echo Try download-online.bat instead
         exit /b 1
     )
 
