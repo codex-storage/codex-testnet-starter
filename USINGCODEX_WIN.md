@@ -28,10 +28,14 @@ This will return a JSON structure with plenty of information about your local no
 Once you upload a file to Codex, other nodes in the testnet can download it. Please do not upload anything you don't want others to access, or, properly encrypt your data *first*.
 
 ```shell
-curl --request POST \
-  --url http://localhost:8080/api/codex/v1/data \
-  --header 'Content-Type: application/octet-stream' \
-  -T <FILE>
+SET FILE="..."
+```
+
+```shell
+curl --request POST ^
+  --url http://localhost:8080/api/codex/v1/data ^
+  --header 'Content-Type: application/octet-stream' ^
+  -T %FILE%
 ```
 
 On successful upload, you'll receive a CID. This can be used to download the file from any node in the network.
@@ -41,11 +45,11 @@ On successful upload, you'll receive a CID. This can be used to download the fil
 When you have a CID of data you want to download, you can use the following commands:
 
 ```shell
-CID="..." # paste your CID from the previous step here between the quotes
+SET CID="..."
 ```
 
 ```shell
-curl -o "${CID}.png" "http://localhost:8080/api/codex/v1/data/${CID}/network"
+curl -o "%CID%.png" "http://localhost:8080/api/codex/v1/data/%CID%/network"
 ```
 > #### 📢 **Note**
 >NOTE: Use the file type of the image uploaded in the previous step
@@ -68,15 +72,7 @@ curl http://localhost:8080/api/codex/v1/data
 In order to start selling storage space to the network, you must configure your node with the following command. Once configured, the node will monitor on-chain requests-for-storage and will automatically enter into contracts that meet these specifications.
 
 ```shell
-curl --request POST \
-  --url http://localhost:8080/api/codex/v1/sales/availability \
-  --header 'Content-Type: application/json' \
-  --data '{
-	"totalSize": "8000000",
-	"duration": "7200",
-	"minPrice": "10",
-	"maxCollateral": "10"
-  }'
+curl --request POST --url http://localhost:8080/api/codex/v1/sales/availability --header "Content-Type: application/json" --data "{ \"totalSize\": \"8000000\", \"duration\": \"7200\", \"minPrice\": \"10\", \"maxCollateral\": \"10\" }"
 ```
 
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
@@ -88,25 +84,13 @@ To purchase storag space from the network, first you must upload your data. Once
 Set your CID:
 
 ```shell
-CID="..." # paste your CID from the previous step here between the quotes
-echo CID: $CID
+SET CID="..."
 ```
 
 Next you can run:
 
 ```shell
-curl --request POST \
-   --url http://localhost:8080/api/codex/v1/storage/request/$CID \
-   --header 'Content-Type: application/json' \
-   --data '{
-    "duration": "3600",
-    "reward": "1",
-    "proofProbability": "5",
-    "expiry": "600",
-    "nodes": 5,
-    "tolerance": 2,
-    "collateral": "1"
-  }'
+curl --request POST --url http://localhost:8080/api/codex/v1/storage/request/%CID% --header "Content-Type: application/json" --data "{ \"duration\": \"3600\", \"reward\": \"1\", \"proofProbability\": \"5\", \"expiry\": \"600\", \"nodes\": 5, \"tolerance\": 2, \"collateral\": \"1\" }"
 ```
 
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
@@ -118,13 +102,13 @@ On successful, this request will return a Purchase-ID.
 Using a Purchase-ID, you can check the status of your request-for-storage contract:
 
 ```shell
-PURCHASE_ID="..."
+SET PURCHASE_ID="..."
 ```
 
 Then:
 
 ```shell
-curl "http://localhost:8080/api/codex/v1/storage/purchases/${PURCHASE_ID}"
+curl "http://localhost:8080/api/codex/v1/storage/purchases/%PURCHASE_ID%"
 ```
 
 This will display state and error information for your purchase.

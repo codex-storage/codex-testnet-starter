@@ -66,3 +66,5 @@ You will need both ETH and TST to use Codex:
 ## 7. Use Codex
 Setup complete! 🥳 You can now proceed to use your Codex node. Follow the
 [instructions](./USINGCODEX.md) 🐇
+
+If you're on Windows, we have prepare the same instructions for CMD [here](./USINGCODEX_WIN.md)
