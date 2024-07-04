@@ -39,7 +39,7 @@ for %%B in (%BINARY_NAMES%) do (
     for /f "tokens=1" %%a in (!FILE_NAME!.sha256) do set "EXPECTED_SHA256=%%a"
     for /f "tokens=* usebackq" %%a in (`powershell -Command "& {Get-FileHash '!FILE_NAME!' -Algorithm SHA256 | Select-Object -ExpandProperty Hash}"`) do set "ACTUAL_SHA256=%%a"
 
-    if not "!ACTUAL_SHA256!"=="!EXPECTED_SHA256!" (
+    if /I not "!ACTUAL_SHA256!" == "!EXPECTED_SHA256!" (
         echo Checksum verification failed for !FILE_NAME!. Expected: !EXPECTED_SHA256!, Got: !ACTUAL_SHA256!
         exit /b 1
     )
