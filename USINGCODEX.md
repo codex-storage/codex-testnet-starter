@@ -17,7 +17,8 @@ This document will show you several useful API calls.
 An easy way to check that your node is up and running is:
 
 ```shell
-curl http://localhost:8080/api/codex/v1/debug/info
+curl http://localhost:8080/api/codex/v1/debug/info \
+  --write-out '\n'
 ```
 
 This will return a JSON structure with plenty of information about your local node. It contains peer information that may be useful when troubleshooting connection issues.
@@ -29,8 +30,9 @@ Once you upload a file to Codex, other nodes in the testnet can download it. Ple
 
 ```shell
 curl --request POST \
-  --url http://localhost:8080/api/codex/v1/data \
-  --header 'Content-Type: application/octet-stream' \
+  http://localhost:8080/api/codex/v1/data \
+  --header 'Content-Type: application/json' \
+  --write-out '\n' \
   -T <FILE>
 ```
 
@@ -57,7 +59,8 @@ Note that Codex does not store content-type or extension information. If you get
 You can view which datasets are currently being stored by your node.
 
 ```shell
-curl http://localhost:8080/api/codex/v1/data
+curl http://localhost:8080/api/codex/v1/data \
+  --write-out '\n'
 ```
 
 ## Create storage availability
@@ -69,8 +72,9 @@ In order to start selling storage space to the network, you must configure your 
 
 ```shell
 curl --request POST \
-  --url http://localhost:8080/api/codex/v1/sales/availability \
+  http://localhost:8080/api/codex/v1/sales/availability \
   --header 'Content-Type: application/json' \
+  --write-out '\n' \
   --data '{
 	"totalSize": "8000000",
 	"duration": "7200",
@@ -83,29 +87,30 @@ For descriptions of each parameter, please view the [Spec](https://github.com/co
 
 
 ## Purchase storage
-To purchase storag space from the network, first you must upload your data. Once you have the CID, use the following to create a request-for-storage.
+To purchase storage space from the network, first you must upload your data. Once you have the CID, use the following to create a request-for-storage.
 
 Set your CID:
 
 ```shell
 CID="..." # paste your CID from the previous step here between the quotes
-echo CID: $CID
+echo "CID: ${CID}"
 ```
 
 Next you can run:
 
 ```shell
 curl --request POST \
-   --url http://localhost:8080/api/codex/v1/storage/request/$CID \
-   --header 'Content-Type: application/json' \
-   --data '{
-    "duration": "3600",
-    "reward": "1",
-    "proofProbability": "5",
-    "expiry": "600",
-    "nodes": 5,
-    "tolerance": 2,
-    "collateral": "1"
+  "http://localhost:8080/api/codex/v1/storage/request/${CID}" \
+  --header 'Content-Type: application/json' \
+  --write-out '\n' \
+  --data '{
+  "duration": "3600",
+  "reward": "1",
+  "proofProbability": "5",
+  "expiry": "600",
+  "nodes": 5,
+  "tolerance": 2,
+  "collateral": "1"
   }'
 ```
 
@@ -124,7 +129,8 @@ PURCHASE_ID="..."
 Then:
 
 ```shell
-curl "http://localhost:8080/api/codex/v1/storage/purchases/${PURCHASE_ID}"
+curl "http://localhost:8080/api/codex/v1/storage/purchases/${PURCHASE_ID}" \
+  --write-out '\n'
 ```
 
 This will display state and error information for your purchase.
