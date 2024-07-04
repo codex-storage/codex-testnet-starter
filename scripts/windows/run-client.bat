@@ -9,7 +9,7 @@ if not defined LOCALIP (
 echo LOCAL IP: %LOCALIP%
 
 if not defined BOOTSPR (
-    set "BOOTSPR=spr:CiUIAhIhA4bDuZcAmHjxteBfi1fMZ3XQbhIAkAoFJDj6VK9xmDQoEgIDARo8CicAJQgCEiEDhsO5lwCYePG14F-LV8xnddBuEgCQCgUkOPpUr3GYNCgQsrCJtAYaCwoJBMCoWP2RAh-aKkcwRQIhAIYaV9SBGR1Z0Q9lblZn70f4G5mL1089WEee-g_o-LZTAiAlVPiPtFN3WfH6WcqH2c-NWEGHV7y-8xsZdmy7y_gTlw"
+    set "BOOTSPR=spr:CiUIAhIhAnBsex_7L5xKJQpmAuOtubQEtKsgCOXE2vaJoTJXrprbEgIDARo8CicAJQgCEiECcGx7H_svnEolCmYC4625tAS0qyAI5cTa9omhMleumtsQtIOZtAYaCwoJBMCoWP2RAh-aKkcwRQIhAJ0vhMssGeKn9RzhfQ3an6rrC4tYiTjoZ4nL2Qjkjdt2AiBMSBj0-myARz2QN5yPO0XiOxHV0z9TaW24sc7pYuW-dQ"
 )
 
 if not exist eth.key (

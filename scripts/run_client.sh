@@ -9,11 +9,10 @@ fi
 echo "LOCAL IP: ${LOCALIP}"
 
 if [ -z "$BOOTSPR" ]; then
-  # Local network SPR (on Ben's machine)
-  # BOOTSPR="spr:CiUIAhIhA4bDuZcAmHjxteBfi1fMZ3XQbhIAkAoFJDj6VK9xmDQoEgIDARo8CicAJQgCEiEDhsO5lwCYePG14F-LV8xnddBuEgCQCgUkOPpUr3GYNCgQsrCJtAYaCwoJBMCoWP2RAh-aKkcwRQIhAIYaV9SBGR1Z0Q9lblZn70f4G5mL1089WEee-g_o-LZTAiAlVPiPtFN3WfH6WcqH2c-NWEGHV7y-8xsZdmy7y_gTlw"
-  BOOTSPR="spr:CiUIAhIhAiJvIcA_ZwPZ9ugVKDbmqwhJZaig5zKyLiuaicRcCGqLEgIDARo8CicAJQgCEiECIm8hwD9nA9n26BUoNuarCEllqKDnMrIuK5qJxFwIaosQ3d6esAYaCwoJBJ_f8zKRAnU6KkYwRAIgM0MvWNJL296kJ9gWvfatfmVvT-A7O2s8Mxp8l9c8EW0CIC-h-H-jBVSgFjg3Eny2u33qF7BDnWFzo7fGfZ7_qc9P"
-  # echo "BOOTSPR is not defined. Please set it to the bootstrap node SPR."
-  # exit 1
+  # Local network SPR (Workshop NUC):
+  BOOTSPR="spr:CiUIAhIhAnBsex_7L5xKJQpmAuOtubQEtKsgCOXE2vaJoTJXrprbEgIDARo8CicAJQgCEiECcGx7H_svnEolCmYC4625tAS0qyAI5cTa9omhMleumtsQtIOZtAYaCwoJBMCoWP2RAh-aKkcwRQIhAJ0vhMssGeKn9RzhfQ3an6rrC4tYiTjoZ4nL2Qjkjdt2AiBMSBj0-myARz2QN5yPO0XiOxHV0z9TaW24sc7pYuW-dQ"
+  # Cloud-Node-01 SPR:
+  # BOOTSPR="spr:CiUIAhIhAiJvIcA_ZwPZ9ugVKDbmqwhJZaig5zKyLiuaicRcCGqLEgIDARo8CicAJQgCEiECIm8hwD9nA9n26BUoNuarCEllqKDnMrIuK5qJxFwIaosQ3d6esAYaCwoJBJ_f8zKRAnU6KkYwRAIgM0MvWNJL296kJ9gWvfatfmVvT-A7O2s8Mxp8l9c8EW0CIC-h-H-jBVSgFjg3Eny2u33qF7BDnWFzo7fGfZ7_qc9P"
 fi
 
 if [ ! -f eth.key ]; then
