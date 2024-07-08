@@ -3,7 +3,7 @@ Notes for the Codex team members who will be running the workshop.
 
 ## Info
  - Bootstrap NUC IP: 192.168.88.253
- - Bootstrap NUC SPR: spr:CiUIAhIhAnBsex_7L5xKJQpmAuOtubQEtKsgCOXE2vaJoTJXrprbEgIDARo8CicAJQgCEiECcGx7H_svnEolCmYC4625tAS0qyAI5cTa9omhMleumtsQtIOZtAYaCwoJBMCoWP2RAh-aKkcwRQIhAJ0vhMssGeKn9RzhfQ3an6rrC4tYiTjoZ4nL2Qjkjdt2AiBMSBj0-myARz2QN5yPO0XiOxHV0z9TaW24sc7pYuW-dQ
+ - Bootstrap NUC SPR: spr:CiUIAhIhAnBsex_7L5xKJQpmAuOtubQEtKsgCOXE2vaJoTJXrprbEgIDARo8CicAJQgCEiECcGx7H_svnEolCmYC4625tAS0qyAI5cTa9omhMleumtsQ6dCutAYaCwoJBMCoWP2RAh-aKkcwRQIhAI1d-q3yzFh2uuTuTkF7XCNUJ1yXNWqH7jLwssM3AZRLAiBK7UxQ1e0pg8ILFVih4Aix4y_87Q3cdxxEktfcNnVU-g
 
 ## Workshop Checklist
 On-site, before the workshop starts:
