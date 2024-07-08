@@ -101,13 +101,12 @@ Next you can run:
 ```shell
 curl --request POST \
   "http://localhost:8080/api/codex/v1/storage/request/${CID}" \
-  --header 'Content-Type: application/json' \
   --write-out '\n' \
   --data '{
   "duration": "3600",
   "reward": "1",
   "proofProbability": "5",
-  "expiry": "600",
+  "expiry": "1200",
   "nodes": 5,
   "tolerance": 2,
   "collateral": "1"

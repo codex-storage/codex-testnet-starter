@@ -90,7 +90,7 @@ SET CID="..."
 Next you can run:
 
 ```shell
-curl --request POST --url http://localhost:8080/api/codex/v1/storage/request/%CID% --header "Content-Type: application/json" --data "{ \"duration\": \"3600\", \"reward\": \"1\", \"proofProbability\": \"5\", \"expiry\": \"600\", \"nodes\": 5, \"tolerance\": 2, \"collateral\": \"1\" }"
+curl --request POST --url http://localhost:8080/api/codex/v1/storage/request/%CID% --header "Content-Type: application/json" --data "{ \"duration\": \"3600\", \"reward\": \"1\", \"proofProbability\": \"5\", \"expiry\": \"1200\", \"nodes\": 5, \"tolerance\": 2, \"collateral\": \"1\" }"
 ```
 
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
