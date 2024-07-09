@@ -33,8 +33,8 @@ SET FILE="..."
 
 ```shell
 curl --request POST ^
-  --url http://localhost:8080/api/codex/v1/data ^
-  --header 'Content-Type: application/octet-stream' ^
+  http://localhost:8080/api/codex/v1/data ^
+  --header "Content-Type: application/octet-stream" ^
   -T %FILE%
 ```
 
@@ -72,7 +72,10 @@ curl http://localhost:8080/api/codex/v1/data
 In order to start selling storage space to the network, you must configure your node with the following command. Once configured, the node will monitor on-chain requests-for-storage and will automatically enter into contracts that meet these specifications.
 
 ```shell
-curl --request POST --url http://localhost:8080/api/codex/v1/sales/availability --header "Content-Type: application/json" --data "{ \"totalSize\": \"8000000\", \"duration\": \"7200\", \"minPrice\": \"10\", \"maxCollateral\": \"10\" }"
+curl --request POST ^
+  http://localhost:8080/api/codex/v1/sales/availability ^
+  --header "Content-Type: application/json" ^
+  --data "{ \"totalSize\": \"8000000\", \"duration\": \"7200\", \"minPrice\": \"10\", \"maxCollateral\": \"10\" }"
 ```
 
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
@@ -90,7 +93,10 @@ SET CID="..."
 Next you can run:
 
 ```shell
-curl --request POST --url http://localhost:8080/api/codex/v1/storage/request/%CID% --header "Content-Type: application/json" --data "{ \"duration\": \"3600\", \"reward\": \"1\", \"proofProbability\": \"5\", \"expiry\": \"1200\", \"nodes\": 5, \"tolerance\": 2, \"collateral\": \"1\" }"
+curl --request POST ^
+  "http://localhost:8080/api/codex/v1/storage/request/%CID%" ^
+  --header "Content-Type: application/json" ^
+  --data "{ \"duration\": \"3600\", \"reward\": \"1\", \"proofProbability\": \"5\", \"expiry\": \"1200\", \"nodes\": 5, \"tolerance\": 2, \"collateral\": \"1\" }"
 ```
 
 For descriptions of each parameter, please view the [Spec](https://github.com/codex-storage/nim-codex/blob/master/openapi.yaml).
