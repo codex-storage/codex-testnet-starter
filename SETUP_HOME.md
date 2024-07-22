@@ -60,6 +60,7 @@ Run `generate` script:
 >If you lose your key and address, you can generate new ones. But the faucet and/or discord bot may refuse to give you new tokens for quite a while!
 
 ### 4. Start Codex node
+Modify the run script: Comment out the Local network SPR. Comment in the Cloud-Node-01 SPR.
 Set your public IP and run the `run_client` script. 
 ```shell
 LOCALIP=<PUBLIC-IP-HERE> ./run_client.sh
