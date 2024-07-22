@@ -40,6 +40,9 @@ curl --request POST ^
 
 On successful upload, you'll receive a CID. This can be used to download the file from any node in the network.
 
+> #### 📢 **Hint**
+> Are you on the Codex Discord server? Post your CID in the test-net channel, see if others are able to download it. Codex does not provide file metadata, so if you want others to be able to open your file, tell them which extension to give it.
+
 
 ## Download a file
 When you have a CID of data you want to download, you can use the following commands:
@@ -52,7 +55,7 @@ SET CID="..."
 curl -o "%CID%.png" "http://localhost:8080/api/codex/v1/data/%CID%/network"
 ```
 > #### 📢 **Note**
->NOTE: Use the file type of the image uploaded in the previous step
+> NOTE: Use the correct extension for the downloaded file.
 
 Note that Codex does not store content-type or extension information. If you get an error, run `echo ${CID}` to verify your CID is set properly.
 
@@ -65,9 +68,12 @@ curl http://localhost:8080/api/codex/v1/data
 ```
 
 ## Create storage availability
-> #### 📢 **Warning**
->Are you currently in a Codex workshop?! Yes: Please skip this step.
->Proceed with 'Purchase storage'.
+> #### 📢 **Warning 1**
+> Are you currently in a Codex workshop?! Yes: Please skip this step.
+> Proceed with 'Purchase storage'.
+
+> #### 📢 **Warning 2**
+> This step required the prover-version of the Codex binary, or when built from sources, that the `feature/ceremony-files` branch was used for building. Also the 'prover' argument must have been provided at start.
 
 In order to start selling storage space to the network, you must configure your node with the following command. Once configured, the node will monitor on-chain requests-for-storage and will automatically enter into contracts that meet these specifications.
 
