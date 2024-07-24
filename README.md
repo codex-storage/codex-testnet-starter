@@ -1,6 +1,9 @@
 # Codex Testnet Starter
 Hit the ground running with Codex.
 
+## Home Setup
+Want to try Codex? You can run it on your own hardware and from your home network. Join our public dev-net. Start [here](./SETUP_HOME.md)
+
 ### Links
  - Codex Website - [codex.storage](https://codex.storage)
  - Codex Whitepaper - [codex.storage](https://codex.storage)
