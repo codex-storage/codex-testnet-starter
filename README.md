@@ -1,6 +1,9 @@
 # Codex Testnet Starter
 Hit the ground running with Codex.
 
+## Disclaimer
+This [disclaimer](./DISCLAIMER.md) applies to everything found in this repository. Be sure to read it.
+
 ## Home Setup
 Want to try Codex? You can run it on your own hardware and from your home network. Join our public dev-net. Start [here](./SETUP_HOME.md)
 

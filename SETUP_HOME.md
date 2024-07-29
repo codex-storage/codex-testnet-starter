@@ -4,6 +4,9 @@ With these instructions you can set up a Codex node on your machine at home. If 
 ## Prerequisites for Home Setup
 In order for Codex to work from your home machine, please make sure you know your public IP address and are able to forward ports on your router or modem. If you're planning to participate as a storage node, please keep in mind that storage nodes are expected to maintain uptime as soon as they are engaged in one or more storage contracts. Taking your storage node offline while it's hosting storage contracts may result in loss of tokens.
 
+## Disclaimer
+This [disclaimer](./DISCLAIMER.md) applies to everything found in this repository. Be sure to read it.
+
 ## Port Forwarding
 Codex requires you to forward two ports: One for data exchange, and one for discovery. These ports can be configured with the CLI parameters `--listen-addrs` and `--disc-port`. We proceed with 8070 for the listen port, and 8090 for the discovery port.
 
