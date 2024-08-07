@@ -20,4 +20,4 @@ codex persistence \
   --circuit-dir=./codex-data/circuits \
   --eth-private-key=eth.key \
   --eth-provider=https://rpc.testnet.codex.storage \
-  --marketplace-address=0x4cBDfab37baB0AA3AC69A7b12C4396907dfF5227
+  --marketplace-address=0xB119d28d3A1bFD281b23A0890B4c1B626EE8F6F0
