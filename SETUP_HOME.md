@@ -84,7 +84,7 @@ Unix users may be required to install libgomp:
 sudo apt-get install libgomp1
 ```
 
-### 6. Acquire tokens
+### 5. Acquire tokens
 You can acquire tokens in one of two ways: the testnet faucets or the Discord bot.
 
 #### Faucets
@@ -98,7 +98,7 @@ You will need both ETH and TST to use Codex:
  - Use `/set` command to enter your generated address.
  - Use `/mint` command to receive some tokens.
 
-### 7. Use Codex
+### 6. Use Codex
 Congrats, you're now a node operator! 🥳 You can now proceed to use your Codex node. Follow the
 [instructions](./USINGCODEX.md) 🐇
 
