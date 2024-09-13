@@ -46,6 +46,25 @@ Run `generate` script:
 
 **Generate a key pair**
 
+Then set the permissions of your private key file.
+For Unix, use this step:
+1. Run `chmod 600 "eth.key"`
+
+For Windows, use these steps:
+1. Open explorer to the key file.
+2. Right-click it -> Properties.
+3. Security -> Advanced.
+4. Add -> Select a principal -> Advanced -> Find Now
+5. Select your user from the list -> OK -> OK
+6. Check 'Full control' -> OK
+7. Disable inheritance -> Remove all inheritance
+8. OK -> OK
+
+Unix users may be required to install libgomp:
+```shell
+sudo apt-get install libgomp1
+```
+
 ## Start Codex node
 We're now ready to start your Codex node and join the testnet!
 Several configuration options must be set correctly, so the node knows how to connect into the testnet. You can review all of Codex's options with `./codex --help`. Each option can be set via CLI argument, or matching environment variable. (For example, option `--api-port` can also be set with env-var `CODEX_API_PORT`.) We recommend you give the list of options a quick read.
@@ -80,25 +99,7 @@ The above options allow you to join the testnet, exchange data, and purchase sto
 
 > 📢 Are you using Windows, and the "/" characters in the listen-addrs are giving you trouble?
 > In some shells, Windows will interpret "/" character as refering to "C:/" or the current working directory.
-> Our workaround is to convert the bash script to batch (.bat).
-
-> 📢 Are your eth private key file permissions insecure?
-> For Unix, use these steps:
-> 1. `chmod 600 "eth.key"`
-> For Windows, use these steps:
-> 1. Open explorer to the key file.
-> 2. Right-click it -> Properties.
-> 3. Security -> Advanced.
-> 4. Add -> Select a principal -> Advanced -> Find Now
-> 5. Select your user from the list -> OK -> OK
-> 6. Check 'Full control' -> OK
-> 7. Disable inheritance -> Remove all inheritance
-> 8. OK -> OK
-
-Unix users may be required to install libgomp:
-```shell
-sudo apt-get install libgomp1
-```
+> Our workaround is to convert the bash script to batch (.bat) and run in CMD.
 
 ## Acquire tokens
 Your node will need some tokens to be able to both purchase storage space and host storage space. You can acquire tokens in one of two ways: the testnet faucets or the Discord bot.
