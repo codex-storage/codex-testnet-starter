@@ -18,7 +18,19 @@ Codex requires you to forward two ports: One for data exchange, and one for disc
 - LAN port: 8090 - Public port: 8090 - Protocol: UDP
 
 > 📢 Running Codex from Docker?
-> Be sure to expose the above ports and protocols in your docker-compose file. Additionally, some users have reported connection issues on some platforms. We recommend using docker's `bridge network` driver for the Codex container.
+> Be sure to expose the above ports and protocols in your docker-compose file. See example docker-compose file further down. Additionally, some users have reported connection issues on some platforms. If you encounter this issue, we recommend trying docker's `bridge network` driver for the Codex container. Example:
+> In the the Codex node service, add:
+> ```
+>     networks:
+>       - codex
+> ```
+> At the root level, add:
+> ```
+> networks:
+>   codex:
+>     name: codex
+>     driver: transparent
+> ```
 
 ## Public IP Address
 It is important that your Codex node can be reached by others in the network. For this reason, Codex will announce your public IP address to the network. If the announced address is incorrect, other nodes will not be able to establish connections with yours. Here is a list of common issues and possible solutions.
@@ -69,11 +81,13 @@ sudo apt-get install libgomp1
 We're now ready to start your Codex node and join the testnet!
 Several configuration options must be set correctly, so the node knows how to connect into the testnet. You can review all of Codex's options with `./codex --help`. Each option can be set via CLI argument, or matching environment variable. (For example, option `--api-port` can also be set with env-var `CODEX_API_PORT`.) We recommend you give the list of options a quick read.
 
-> Thinking of building a shell script? Start here and modify [this](./scripts/run_testnet.sh).
+> Building a shell script? Start here and modify [this](./scripts/run_testnet.sh).
+
+> Using docker-compose? Start here and modify [this](./docker-compose.yaml).
 
 These options are required to join the testnet:
  - `--bootstrap-node=SPR` - Set SPR to one of the Codex Testnet bootstrap node SPRs found [here](https://docs.codex.storage/networks/testnet)
- - `--nat=IP` - Set IP to your public IP address.
+ - `--nat=IP` - Set IP to your public IP address. Using Docker? Skip this one.
  - `--listen-addrs=ADDR` - Set ADDR to "/ip4/0.0.0.0/tcp/8070". Note: If you changed the TCP port in the port forwarding step previously, change it here as well.
  - `--disc-port=PORT` - Set PORT to 8090. Again: If you changed it in the forward, do the same thing here.
  - `persistence` - Tells the node we want to enable marketplace interactions.
@@ -95,6 +109,7 @@ The above options allow you to join the testnet, exchange data, and purchase sto
 >      - persistence
 >      - prover
 > ```
+> 📢 The Codex docker container will automatically find the public IP and use it. You can override this behavior by removing `NAT_PUBLIC_IP_AUTO` and setting `CODEX_NAT` manually.
 > 📢 When running in a container, option `--eth-private-key` can't be set to a key file outside of your container. To solve this, set the environment variable `PRIV_KEY` to the content of your private key file. Scripting inside the docker container will automatically write this to a file in the container, set the correct permissions, and pass it to Codex.
 
 > 📢 Are you using Windows, and the "/" characters in the listen-addrs are giving you trouble?
@@ -104,18 +119,18 @@ The above options allow you to join the testnet, exchange data, and purchase sto
 ## Acquire tokens
 Your node will need some tokens to be able to both purchase storage space and host storage space. You can acquire tokens in one of two ways: the testnet faucets or the Discord bot.
 
-#### Faucets
+### Faucets
 You will need both ETH and TST:
  1. Get some testnet ETH using https://faucet-eth.testnet.codex.storage.
  2. Get some testnet TST using https://faucet-tst.testnet.codex.storage.
 
-#### Discord bot
+### Discord bot
  - Join the Codex discord server: https://discord.gg/codex-storage.
  - Go to the "bot" channel, in the category "codex-bot".
  - Use `/set` command to enter your eth address.
  - Use `/mint` command to receive some tokens.
 
-### 6. Use Codex
+## Use Codex
 Congrats, you're now a node operator! 🥳 You can now proceed to use your Codex node. Follow the
 [instructions](./USINGCODEX.md) 🐇
 

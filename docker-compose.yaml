@@ -1,12 +1,13 @@
 services:
   # Codex Node
   codex:
-    image: codexstorage/nim-codex:sha-1524803-dist-tests
+    image: codexstorage/nim-codex:sha-656ce37-dist-tests
+    # This needs to be updated with a new release image with downloader tool embedded. PR is open.
     container_name: codex
     command:
       - codex
       - persistence
-      - prover
+      # - prover # Uncomment this to enable storage proof generator.
       - --bootstrap-node=spr:CiUIAhIhAiJvIcA_ZwPZ9ugVKDbmqwhJZaig5zKyLiuaicRcCGqLEgIDARo8CicAJQgCEiECIm8hwD9nA9n26BUoNuarCEllqKDnMrIuK5qJxFwIaosQ3d6esAYaCwoJBJ_f8zKRAnU6KkYwRAIgM0MvWNJL296kJ9gWvfatfmVvT-A7O2s8Mxp8l9c8EW0CIC-h-H-jBVSgFjg3Eny2u33qF7BDnWFzo7fGfZ7_qc9P
       - --bootstrap-node=spr:CiUIAhIhAyUvcPkKoGE7-gh84RmKIPHJPdsX5Ugm_IHVJgF-Mmu_EgIDARo8CicAJQgCEiEDJS9w-QqgYTv6CHzhGYog8ck92xflSCb8gdUmAX4ya78QoemesAYaCwoJBES39Q2RAnVOKkYwRAIgLi3rouyaZFS_Uilx8k99ySdQCP1tsmLR21tDb9p8LcgCIG30o5YnEooQ1n6tgm9fCT7s53k6XlxyeSkD_uIO9mb3
       - --bootstrap-node=spr:CiUIAhIhA6_j28xa--PvvOUxH10wKEm9feXEKJIK3Z9JQ5xXgSD9EgIDARo8CicAJQgCEiEDr-PbzFr74--85TEfXTAoSb195cQokgrdn0lDnFeBIP0QzOGesAYaCwoJBK6Kf1-RAnVEKkcwRQIhAPUH5nQrqG4OW86JQWphdSdnPA98ErQ0hL9OZH9a4e5kAiBBZmUl9KnhSOiDgU3_hvjXrXZXoMxhGuZ92_rk30sNDA
@@ -16,15 +17,14 @@ services:
       - --bootstrap-node=spr:CiUIAhIhAntGLadpfuBCD9XXfiN_43-V3L5VWgFCXxg4a8uhDdnYEgIDARo8CicAJQgCEiECe0Ytp2l-4EIP1dd-I3_jf5XcvlVaAUJfGDhry6EN2dgQsIufsAYaCwoJBNEmoCiRAnV2KkYwRAIgXO3bzd5VF8jLZG8r7dcLJ_FnQBYp1BcxrOvovEa40acCIDhQ14eJRoPwJ6GKgqOkXdaFAsoszl-HIRzYcXKeb7D9
     environment:
       - CODEX_DATA_DIR=/data
-      - CODEX_LOG_LEVEL=TRACE;warn:discv5,providers,manager,cache;warn:libp2p,multistream,switch,transport,tcptransport,semaphore,asyncstreamwrapper,lpstream,mplex,mplexchannel,noise,bufferstream,mplexcoder,secure,chronosstream,connection,connmanager,websock,ws-session
       - CODEX_API_PORT=8080
       - CODEX_API_BINDADDR=0.0.0.0
-      - CODEX_LISTEN_ADDRS=${CODEX_LISTEN_ADDRS:-/ip4/0.0.0.0/tcp/8070}
-      - CODEX_DISC_PORT=${CODEX_DISC_PORT:-8090}
-      - NAT_PUBLIC_IP_AUTO=${NAT_PUBLIC_IP_AUTO:-https://ip.codex.storage}
-      - CODEX_ETH_PROVIDER=${CODEX_ETH_PROVIDER:-ws://geth:8546}
+      - CODEX_LISTEN_ADDRS=/ip4/0.0.0.0/tcp/8070
+      - CODEX_DISC_PORT=8090
+      - NAT_PUBLIC_IP_AUTO=https://ip.codex.storage
+      - CODEX_ETH_PROVIDER=https://rpc.testnet.codex.storage/
       - CODEX_VALIDATOR=false
-      - PRIV_KEY=${PRIV_KEY}
+      - PRIV_KEY=<<<PRIVATE_KEY_HERE>>>
       - CODEX_MARKETPLACE_ADDRESS=0xB119d28d3A1bFD281b23A0890B4c1B626EE8F6F0
     ports:
       - 8080:8080/tcp # API
@@ -37,79 +37,3 @@ services:
       options:
         max-size: 100m
         max-file: 5
-    networks:
-      - codex
-    depends_on:
-      geth-check:
-        condition: service_healthy
-
-  # Geth check
-  geth-check:
-    image: curlimages/curl
-    container_name: geth-check
-    command: sleep infinity
-    depends_on:
-      - geth
-    networks:
-      - codex
-    healthcheck:
-      test: |
-        curl -s -m 2 http://geth:8545 -XPOST -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":1}' | grep '"result":false'
-      interval: 5s
-      timeout: 3s
-      retries: 1000
-
-  # Geth init
-  geth-init:
-    image: ethereum/client-go:v1.13.14
-    container_name: geth-init
-    entrypoint: /bin/sh
-    command: -c '[ -d /data/geth/chaindata ] && echo "Genesis block already created" || geth init --datadir /data /data/genesis.json'
-    volumes:
-      - ./geth-data:/data:z
-      - ./genesis.json:/data/genesis.json
-    networks:
-      - codex
-
-  # Geth
-  geth:
-    image: ethereum/client-go:v1.13.14
-    container_name: geth
-    environment:
-      - GETH_DATADIR=/data
-      - GETH_NETWORKID=789987
-      - GETH_SYNCMODE=snap
-      - GETH_NAT=${GETH_NAT:-auto}
-      - GETH_DISCOVERY_PORT=${GETH_DISCOVERY_PORT:-8547}
-      - GETH_PORT=${GETH_PORT:-8548}
-      - GETH_VERBOSITY=${GETH_VERBOSITY:-3}
-      - GETH_HTTP=true
-      - GETH_HTTP_PORT=8545
-      - GETH_HTTP_ADDR=0.0.0.0
-      - GETH_HTTP_VHOSTS=*
-      - GETH_WS=true
-      - GETH_WS_PORT=8546
-      - GETH_WS_ADDR=0.0.0.0
-      - GETH_BOOTNODES=enode://cff0c44c62ecd6e00d72131f336bb4e4968f2c1c1abeca7d4be2d35f818608b6d8688b6b65a18f1d57796eaca32fd9d08f15908a88afe18c1748997235ea6fe7@159.223.243.50:40010,enode://ea331eaa8c5150a45b793b3d7c17db138b09f7c9dd7d881a1e2e17a053e0d2600e0a8419899188a87e6b91928d14267949a7e6ec18bfe972f3a14c5c2fe9aecb@68.183.245.13:40030,enode://4a7303b8a72db91c7c80c8fb69df0ffb06370d7f5fe951bcdc19107a686ba61432dc5397d073571433e8fc1f8295127cabbcbfd9d8464b242b7ad0dcd35e67fc@174.138.127.95:40020,enode://36f25e91385206300d04b95a2f8df7d7a792db0a76bd68f897ec7749241b5fdb549a4eecfab4a03c36955d1242b0316b47548b87ad8291794ab6d3fecda3e85b@64.225.89.147:40040,enode://2e14e4a8092b67db76c90b0a02d97d88fc2bb9df0e85df1e0a96472cdfa06b83d970ea503a9bc569c4112c4c447dbd1e1f03cf68471668ba31920ac1d05f85e3@170.64.249.54:40050,enode://6eeb3b3af8bef5634b47b573a17477ea2c4129ab3964210afe3b93774ce57da832eb110f90fbfcfa5f7adf18e55faaf2393d2e94710882d09d0204a9d7bc6dd2@143.244.205.40:40060,enode://6ba0e8b5d968ca8eb2650dd984cdcf50acc01e4ea182350e990191aadd79897801b79455a1186060aa3818a6bc4496af07f0912f7af53995a5ddb1e53d6f31b5@209.38.160.40:40070
-    ports:
-      - 8545:8545/tcp # HTTP-RPC
-      - 8546:8546/tcp # WS-RPC
-      - 8547:8547/udp # Discovery
-      - 8548:8548/tcp # Transport
-    volumes:
-      - ./geth-data:/data:z
-    logging:
-      driver: json-file
-      options:
-        max-size: 100m
-        max-file: 5
-    depends_on:
-      geth-init:
-        condition: service_completed_successfully
-    networks:
-      - codex
-
-networks:
-  codex:
-    name: codex
-    driver: bridge
