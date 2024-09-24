@@ -18,7 +18,7 @@ if not exist eth.key (
 )
 
 :: Set variables
-set "VERSION=v0.1.3"
+set "VERSION=v0.1.4"
 set "OS=windows"
 call :get_arch ARCH
 set "DATA_DIR=data_client"
@@ -37,8 +37,7 @@ codex-%VERSION%-%OS%-%ARCH%.exe ^
     --bootstrap-node=%BOOTSPR% ^
     persistence ^
     --eth-private-key=eth.key ^
-    --eth-provider=https://rpc.testnet.codex.storage ^
-    --marketplace-address=0x9C88D67c7C745D2F0A4E411c18A6a22c15b37EaA
+    --eth-provider=https://rpc.testnet.codex.storage
 
 exit /b 0
 
