@@ -1,8 +1,7 @@
 services:
   # Codex Node
   codex:
-    image: codexstorage/nim-codex:sha-656ce37-dist-tests
-    # This needs to be updated with a new release image with downloader tool embedded. PR is open.
+    image: codexstorage/nim-codex:0.1.4
     container_name: codex
     command:
       - codex
