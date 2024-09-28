@@ -3,7 +3,10 @@ setlocal enabledelayedexpansion
 
 call utils.bat
 
-if not defined LOCALIP (
+:: Check if LOCALIP is provided as an argument
+if "%1" neq "" (
+    set "LOCALIP=%1"
+) else if not defined LOCALIP (
     call :get_ip LOCALIP
 )
 echo LOCAL IP: %LOCALIP%
@@ -14,6 +17,18 @@ if not defined BOOTSPR (
 
 if not exist eth.key (
     echo eth.key does not exist. Please run generate.bat to create it.
+    exit /b 1
+)
+
+:: Set proper permissions for eth.key
+echo Setting proper permissions for eth.key...
+icacls eth.key /reset
+icacls eth.key /inheritance:r
+icacls eth.key /grant:r %USERNAME%:(R,F)
+icacls eth.key /remove "Authenticated Users" "BUILTIN\Users"
+icacls eth.key
+if errorlevel 1 (
+    echo Failed to set permissions for eth.key. Please run this script as administrator.
     exit /b 1
 )
 
