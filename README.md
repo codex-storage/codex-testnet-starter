@@ -10,7 +10,7 @@ Want to join the Codex Testnet? You can run it on your own hardware and from you
 ### Links
  - Codex Website - [codex.storage](https://codex.storage)
  - Docs - [docs.codex.storage](https://docs.codex.storage)
- - Codex Whitepaper - [codex.storage](https://codex.storage)
+ - Codex Whitepaper - [docs.codex.storage](https://docs.codex.storage/learn/whitepaper)
  - Codex API - [api.codex.storage](https://api.codex.storage)
  - Codex Discord - [discord.gg/codex-storage](https://discord.gg/codex-storage)
  - Block explorer - [explorer.testnet.codex.storage](https://explorer.testnet.codex.storage)
