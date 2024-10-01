@@ -16,3 +16,4 @@ Want to join the Codex Testnet? You can run it on your own hardware and from you
  - Block explorer - [explorer.testnet.codex.storage](https://explorer.testnet.codex.storage)
  - Web wallet - [wallet.testnet.codex.storage](https://wallet.testnet.codex.storage)
 
+Your participation in the Codex Testnet is subject to the [Codex Testnet Terms and Conditions](https://github.com/codex-storage/codex-testnet-starter/blob/master/Codex%20Testnet%20Terms%20and%20Conditions.pdf) and [Codex Testnet Privacy Policy](https://github.com/codex-storage/codex-testnet-starter/blob/master/Codex%20Testnet%20Privacy%20Policy.pdf).
