@@ -15,7 +15,7 @@ set "BINARY_NAMES=codex"
 
 :: Download, verify, and extract each binary
 for %%B in (%BINARY_NAMES%) do (
-    set "FILE_NAME=%%B-%VERSION%-%OS%-%ARCH%%ARCHIVE_EXT%"
+    set "FILE_NAME=%%B-%VERSION%-%OS%-%ARCH%-libs%ARCHIVE_EXT%"
     set "DOWNLOAD_URL=%BASE_URL%/!FILE_NAME!"
     set "CHECKSUM_URL=%BASE_URL%/!FILE_NAME!.sha256"
 
