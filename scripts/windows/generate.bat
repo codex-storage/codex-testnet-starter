@@ -4,9 +4,10 @@ setlocal enabledelayedexpansion
 :: Variables
 set key_file="%cd%\eth.key"
 set address_file="%cd%\eth.address"
+set url="https://key.codex.storage/json"
 
 :: Generate
-echo Generating private key...
+echo "Generating private key from remote <%url%>..."
 
 :: Use PowerShell to make the API call and process the response
 powershell -Command "& { $response = Invoke-RestMethod -Uri 'https://key.codex.storage/json'; $privateKey = $response.private; $address = $response.address; $privateKey | Out-File -Encoding ASCII -FilePath '%key_file%'; $address | Out-File -Encoding ASCII -FilePath '%address_file%'; Write-Host ' * your private key has been saved to %key_file%'; Write-Host ' * your address has been saved to %address_file%'; Write-Host (' * your ethereum address is ' + $address); }"
