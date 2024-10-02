@@ -4,5 +4,10 @@
 
 # Datadir
 *-data
+data_client
+
+# Ethereum keypair
+eth.address
+eth.key
 
 .DS_Store
