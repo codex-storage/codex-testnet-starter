@@ -4,11 +4,10 @@ set -e
 # Variables
 key_file="eth.key"
 address_file="eth.address"
-
-uri=https://key.codex.storage
+url=https://key.codex.storage
 
 # Generate
-echo "Generating private key from remote <${uri}>..."
+echo "Generating private key from remote <${url}>..."
 
 response=$(curl -s ${uri})
 awk -F ': ' '/private/ {print $2}' <<<"${response}" >"${key_file}"

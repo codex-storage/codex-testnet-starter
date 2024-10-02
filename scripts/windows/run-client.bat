@@ -7,14 +7,22 @@ call utils.bat
 if "%1" neq "" (
     set "LOCALIP=%1"
 ) else if not defined LOCALIP (
-    call :get_ip LOCALIP
+    if %NETWORK% == workshop (
+        call :get_ip LOCALIP
+    ) else (
+        call :get_ip_public LOCALIP
+    )
 )
 echo LOCAL IP: %LOCALIP%
 
 if not defined BOOTSPR (
-    :: workshop
-    :: set "BOOTSPR=spr:CiUIAhIhAnBsex_7L5xKJQpmAuOtubQEtKsgCOXE2vaJoTJXrprbEgIDARo8CicAJQgCEiECcGx7H_svnEolCmYC4625tAS0qyAI5cTa9omhMleumtsQnbm0tAYaCwoJBMCoWP2RAh-aKkcwRQIhANjwAV9DGFe4zcMUEHjuTsGWAPc7WB7uoSS86HATwouqAiA8dFhsALCSLsQbSOPF1j7NF643oEmPEJAwU9dIwjM6TA"
-    set BOOTSPR="spr:CiUIAhIhAiJvIcA_ZwPZ9ugVKDbmqwhJZaig5zKyLiuaicRcCGqLEgIDARo8CicAJQgCEiECIm8hwD9nA9n26BUoNuarCEllqKDnMrIuK5qJxFwIaosQ3d6esAYaCwoJBJ_f8zKRAnU6KkYwRAIgM0MvWNJL296kJ9gWvfatfmVvT-A7O2s8Mxp8l9c8EW0CIC-h-H-jBVSgFjg3Eny2u33qF7BDnWFzo7fGfZ7_qc9P"
+    if %NETWORK% == workshop (
+        :: workshop
+        set BOOTSPR="spr:CiUIAhIhAnBsex_7L5xKJQpmAuOtubQEtKsgCOXE2vaJoTJXrprbEgIDARo8CicAJQgCEiECcGx7H_svnEolCmYC4625tAS0qyAI5cTa9omhMleumtsQnbm0tAYaCwoJBMCoWP2RAh-aKkcwRQIhANjwAV9DGFe4zcMUEHjuTsGWAPc7WB7uoSS86HATwouqAiA8dFhsALCSLsQbSOPF1j7NF643oEmPEJAwU9dIwjM6TA"
+    ) else if %NETWORK% == testnet (
+        :: testnet
+        set BOOTSPR="spr:CiUIAhIhAiJvIcA_ZwPZ9ugVKDbmqwhJZaig5zKyLiuaicRcCGqLEgIDARo8CicAJQgCEiECIm8hwD9nA9n26BUoNuarCEllqKDnMrIuK5qJxFwIaosQ3d6esAYaCwoJBJ_f8zKRAnU6KkYwRAIgM0MvWNJL296kJ9gWvfatfmVvT-A7O2s8Mxp8l9c8EW0CIC-h-H-jBVSgFjg3Eny2u33qF7BDnWFzo7fGfZ7_qc9P"
+    )
 )
 
 if not exist eth.key (
@@ -69,6 +77,7 @@ exit /b 0
     set "%1=%arch_result%"
 exit /b
 
+:: Function to get IP
 :get_ip
     for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /c:"IPv4 Address"') do (
         set "%1=%%a"
@@ -76,4 +85,9 @@ exit /b
         goto :break
     )
     :break
+exit /b
+
+:: Function to get Public IP using ip lookup service
+:get_ip_public
+    for /f "tokens=1" %%a in ('curl -m 5 -s https://ip.codex.storage') do set "%1=%%a"
 exit /b
