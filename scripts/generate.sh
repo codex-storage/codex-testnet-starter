@@ -9,7 +9,7 @@ url=https://key.codex.storage
 # Generate
 echo "Generating private key from remote <${url}>..."
 
-response=$(curl -s ${uri})
+response=$(curl -s ${url})
 awk -F ': ' '/private/ {print $2}' <<<"${response}" >"${key_file}"
 awk -F ': ' '/address/ {print $2}' <<<"${response}" >"${address_file}"
 
