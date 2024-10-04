@@ -60,6 +60,8 @@ codex-%VERSION%-%OS%-%ARCH%.exe ^
     --api-port=8080 ^
     --disc-port=8090 ^
     --listen-addrs=/ip4/0.0.0.0/tcp/8070 ^
+    --api-cors-origin="*" ^
+    --block-ttl=30d ^
     --bootstrap-node=%BOOTSPR% ^
     persistence ^
     --eth-private-key=eth.key ^

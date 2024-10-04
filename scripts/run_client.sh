@@ -52,6 +52,8 @@ chmod 0700 ${DATA_DIR}
   --disc-port=8090 \
   --listen-addrs=/ip4/0.0.0.0/tcp/8070 \
   --bootstrap-node=${BOOTSPR} \
+  --api-cors-origin="*" \
+  --block-ttl=30d \
   persistence \
   --eth-private-key=eth.key \
   --eth-provider=https://rpc.testnet.codex.storage
