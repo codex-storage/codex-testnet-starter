@@ -1,7 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 
-call utils.bat
+:: Variables
+if not defined NETWORK set NETWORK=testnet
 
 :: Check if LOCALIP is provided as an argument
 if "%1" neq "" (

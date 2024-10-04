@@ -1,7 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 
-call utils.bat
+:: Variables
+if not defined NETWORK set NETWORK=testnet
 
 :: Set variables
 set "OS=windows"
