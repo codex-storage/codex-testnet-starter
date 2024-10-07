@@ -92,5 +92,5 @@ exit /b
 
 :: Function to get Public IP using ip lookup service
 :get_ip_public
-    for /f "tokens=1" %%a in ('curl -m 5 -s https://ip.codex.storage') do set "%1=%%a"
+    for /f "tokens=1" %%a in ('curl -m 5 -s --ssl-reqd ip.codex.storage') do set "%1=%%a"
 exit /b
