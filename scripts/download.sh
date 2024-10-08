@@ -48,7 +48,7 @@ else
     ARCHIVE_EXT=".tar.gz"
     EXE_EXT=""
 fi
-VERSION="v0.1.4"
+VERSION="v0.1.6"
 BASE_URL="http://192.168.88.253:8080"
 EXTRACT_DIR="./"
 # Use BINARY_NAMES=("codex" "codex-prover") to also download/verify/extract prover binary

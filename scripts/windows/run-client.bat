@@ -1,7 +1,8 @@
 @echo off
 setlocal enabledelayedexpansion
 
-call utils.bat
+:: Variables
+if not defined NETWORK set NETWORK=testnet
 
 :: Check if LOCALIP is provided as an argument
 if "%1" neq "" (
@@ -43,7 +44,7 @@ if errorlevel 1 (
 )
 
 :: Set variables
-set "VERSION=v0.1.4"
+set "VERSION=v0.1.6"
 set "OS=windows"
 call :get_arch ARCH
 set "DATA_DIR=data_client"
@@ -59,6 +60,8 @@ codex-%VERSION%-%OS%-%ARCH%.exe ^
     --api-port=8080 ^
     --disc-port=8090 ^
     --listen-addrs=/ip4/0.0.0.0/tcp/8070 ^
+    --api-cors-origin="*" ^
+    --block-ttl=30d ^
     --bootstrap-node=%BOOTSPR% ^
     persistence ^
     --eth-private-key=eth.key ^
@@ -89,5 +92,5 @@ exit /b
 
 :: Function to get Public IP using ip lookup service
 :get_ip_public
-    for /f "tokens=1" %%a in ('curl -m 5 -s https://ip.codex.storage') do set "%1=%%a"
+    for /f "tokens=1" %%a in ('curl -m 5 -s --ssl-reqd ip.codex.storage') do set "%1=%%a"
 exit /b
