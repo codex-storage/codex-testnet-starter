@@ -48,7 +48,7 @@ else
     ARCHIVE_EXT=".tar.gz"
     EXE_EXT=""
 fi
-VERSION="v0.1.5"
+VERSION="v0.1.6"
 BASE_URL="https://github.com/codex-storage/nim-codex/releases/download/${VERSION}"
 EXTRACT_DIR="./"
 # Use BINARY_NAMES=("codex" "codex-prover") to also download/verify/extract prover binary

@@ -94,7 +94,7 @@ These options are required to join the testnet:
  - `--eth-private-key=FILE` - Set FILE to your private key file.
  - `--eth-provider=URL` - Set URL to the "Geth Public RPC" found [here](https://docs.codex.storage/networks/testnet)
 The marketplace address should default to the correct testnet deployment. You can override it with:
- - `--marketplace-address=ADDR` - Set ADDR to `0xCDef8d6884557be4F68dC265b6bB2E3e52a6C9d6`
+ - `--marketplace-address=ADDR` - Set ADDR to `0xfE822Df439d987849a90B64a4C0e26a297DBD47F`
 
 The above options allow you to join the testnet, exchange data, and purchase storage in the network. If you wish to *sell storage space* to the network, you must include one additional argument:
  - `prover` - Tells the node we want to enable storage space selling
