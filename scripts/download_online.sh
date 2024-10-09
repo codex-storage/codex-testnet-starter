@@ -29,7 +29,7 @@ download_file() {
     local output_file="$2"
 
     if command -v curl &> /dev/null; then
-        curl -L -o "$output_file" "$url"
+        curl --max-time 300 --connect-timeout 5 -L -o "$output_file" "$url"
     elif command -v wget &> /dev/null; then
         wget -O "$output_file" "$url"
     else
@@ -48,8 +48,13 @@ else
     ARCHIVE_EXT=".tar.gz"
     EXE_EXT=""
 fi
-VERSION="v0.1.6"
-BASE_URL="https://github.com/codex-storage/nim-codex/releases/download/${VERSION}"
+
+if [[ "${NETWORK}" == "workshop" && -z "${DOWNLOAD}" ]]; then
+    BASE_URL="http://192.168.88.253:8080"
+else
+    BASE_URL="https://github.com/codex-storage/nim-codex/releases/download/${VERSION}"
+fi
+
 EXTRACT_DIR="./"
 # Use BINARY_NAMES=("codex" "codex-prover") to also download/verify/extract prover binary
 BINARY_NAMES=("codex")
@@ -64,6 +69,7 @@ for BINARY_NAME in "${BINARY_NAMES[@]}"; do
     echo "Downloading ${FILE_NAME}..."
     if ! download_file "$DOWNLOAD_URL" "$FILE_NAME"; then
         echo "Download failed for ${FILE_NAME}"
+        echo "Try to use 'DOWNLOAD=online ./`basename "$0"`' instead."
         exit 1
     fi
     echo
@@ -72,6 +78,7 @@ for BINARY_NAME in "${BINARY_NAMES[@]}"; do
     echo "Downloading SHA256 checksum for ${FILE_NAME}..."
     if ! download_file "$CHECKSUM_URL" "${FILE_NAME}.sha256"; then
         echo "Checksum download failed for ${FILE_NAME}"
+        echo "Try to use 'DOWNLOAD=online ./`basename "$0"`' instead."
         exit 1
     fi
     echo
