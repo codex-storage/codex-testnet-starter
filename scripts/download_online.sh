@@ -78,6 +78,7 @@ for BINARY_NAME in "${BINARY_NAMES[@]}"; do
     echo "Downloading SHA256 checksum for ${FILE_NAME}..."
     if ! download_file "$CHECKSUM_URL" "${FILE_NAME}.sha256"; then
         echo "Checksum download failed for ${FILE_NAME}"
+        echo "Try to use 'DOWNLOAD=online ./`basename "$0"`' instead."
         exit 1
     fi
     echo
