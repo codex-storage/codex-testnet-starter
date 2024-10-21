@@ -2,7 +2,7 @@
 
 # Variables
 NETWORK="${NETWORK:-testnet}"
-VERSION="${VERSION:-v0.1.6}"
+VERSION="${VERSION:-v0.1.7}"
 LOG_LEVEL="${LOG_LEVEL:-info}"
 DOWNLOAD="${DOWNLOAD}"
 
