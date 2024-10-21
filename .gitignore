@@ -11,3 +11,6 @@ eth.address
 eth.key
 
 .DS_Store
+
+# Codex artifacts
+codex-v*

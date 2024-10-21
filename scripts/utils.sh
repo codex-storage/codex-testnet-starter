@@ -2,6 +2,9 @@
 
 # Variables
 NETWORK="${NETWORK:-testnet}"
+VERSION="${VERSION:-v0.1.6}"
+LOG_LEVEL="${LOG_LEVEL:-info}"
+DOWNLOAD="${DOWNLOAD}"
 
 # Function to detect OS
 get_os() {
