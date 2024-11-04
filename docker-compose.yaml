@@ -1,7 +1,7 @@
 services:
   # Codex Node
   codex:
-    image: codexstorage/nim-codex:0.1.7
+    image: codexstorage/nim-codex:0.1.8
     container_name: codex
     command:
       - codex
