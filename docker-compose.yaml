@@ -23,7 +23,7 @@ services:
       - NAT_PUBLIC_IP_AUTO=https://ip.codex.storage
       - CODEX_ETH_PROVIDER=https://rpc.testnet.codex.storage/
       - CODEX_VALIDATOR=false
-      - PRIV_KEY=<<<PRIVATE_KEY_HERE>>>
+      - ETH_PRIVATE_KEY=<<<PRIVATE_KEY_HERE>>>
     ports:
       - 8080:8080/tcp # API
       - 8090:8090/udp # Discovery
