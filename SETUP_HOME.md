@@ -111,7 +111,7 @@ The above options allow you to join the testnet, exchange data, and purchase sto
 >      - prover
 > ```
 > 📢 The Codex docker container will automatically find the public IP and use it. You can override this behavior by removing `NAT_PUBLIC_IP_AUTO` and setting `CODEX_NAT` manually.
-> 📢 When running in a container, option `--eth-private-key` can't be set to a key file outside of your container. To solve this, set the environment variable `PRIV_KEY` to the content of your private key file. Scripting inside the docker container will automatically write this to a file in the container, set the correct permissions, and pass it to Codex.
+> 📢 When running in a container, option `--eth-private-key` can't be set to a key file outside of your container. To solve this, set the environment variable `ETH_PRIVATE_KEY` to the content of your private key file. Scripting inside the docker container will automatically write this to a file in the container, set the correct permissions, and pass it to Codex.
 
 > 📢 Are you using Windows, and the "/" characters in the listen-addrs are giving you trouble?
 > In some shells, Windows will interpret "/" character as refering to "C:/" or the current working directory.
