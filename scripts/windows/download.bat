@@ -9,7 +9,7 @@ set "OS=windows"
 call :get_arch ARCH
 set "ARCHIVE_EXT=.zip"
 set "EXE_EXT=.exe"
-set "VERSION=v0.1.7"
+set "VERSION=v0.1.8"
 set "BASE_URL=http://192.168.88.253:8080"
 set "EXTRACT_DIR=.\"
 set "BINARY_NAMES=codex"
