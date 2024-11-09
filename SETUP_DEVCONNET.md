@@ -1,10 +1,10 @@
-# DevCon Network
+# Codex Local Network
 With these instructions you can plug your Codex node into the DevCon local network, to participate in the Raspberry Pi challenge!
 You can also participate in the challenge using the public testnet, if you have a node already set up.
 
 ## 1. Set up your Codex node
 Follow the normal Codex TestNet instructions to get Codex running. You can skip all the steps related to port forwarding.
-Go [Here](https://docs.codex.storage)
+Go [Here](https://docs.codex.storage/networks/testnet)
 
 ## 2. Switch to the local network wifi
 Switch to the workshop wifi:
