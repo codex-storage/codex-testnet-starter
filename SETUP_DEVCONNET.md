@@ -13,7 +13,7 @@ Switch to the workshop wifi:
 
 ## 3. Switch Codex to the local network
 - Turn off your Codex node.
-- Change the bootstrap SPR from the TestNet SPR to the following: (UPDATE THIS!) `spr:CiUIAhIhAnBsex_7L5xKJQpmAuOtubQEtKsgCOXE2vaJoTJXrprbEgIDARo8CicAJQgCEiECcGx7H_svnEolCmYC4625tAS0qyAI5cTa9omhMleumtsQnbm0tAYaCwoJBMCoWP2RAh-aKkcwRQIhANjwAV9DGFe4zcMUEHjuTsGWAPc7WB7uoSS86HATwouqAiA8dFhsALCSLsQbSOPF1j7NF643oEmPEJAwU9dIwjM6TA`
+- Change the bootstrap SPR from the TestNet SPR to the following: `spr:CiUIAhIhA5TxvjEdCzhsYs-QJacLctKXGoNzNdk5bxwbhLMjuC_CEgIDARo8CicAJQgCEiEDlPG-MR0LOGxiz5Alpwty0pcag3M12TlvHBuEsyO4L8IQqqm8uQYaCwoJBMCoWPyRAh-aKkYwRAIgAX8po8MEuvfaXcRXSqnJMo9ejhaXE46E_PpvYgpdVl0CIEwSZx8AopRNtYQiHlyBfo3GWUS-Lr_ejHfcnWQGlDmO`
 - Change your '--nat' IP address parameter to the IP address of your machine in the local WIFI network.
 
 ## 4. Done!
