@@ -44,7 +44,7 @@ if errorlevel 1 (
 )
 
 :: Set variables
-set "VERSION=v0.1.8"
+set "VERSION=v0.1.9"
 set "OS=windows"
 call :get_arch ARCH
 set "DATA_DIR=data_client"

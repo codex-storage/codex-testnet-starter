@@ -9,7 +9,7 @@ set "OS=windows"
 call :get_arch ARCH
 set "ARCHIVE_EXT=.zip"
 set "EXE_EXT=.exe"
-set "VERSION=v0.1.8"
+set "VERSION=v0.1.9"
 set "BASE_URL=https://github.com/codex-storage/nim-codex/releases/download/%VERSION%"
 set "EXTRACT_DIR=.\"
 set "BINARY_NAMES=codex"
