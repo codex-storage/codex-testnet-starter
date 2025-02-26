@@ -13,7 +13,7 @@ chmod 0700 ${DATA_DIR}
 ./codex \
   --data-dir=${DATA_DIR} \
   --storage-quota=11811160064 \
-  --nat=${PUBLICIP} \
+  --nat=extip:${PUBLICIP} \
   --api-port=8080 \
   --disc-port=8090 \
   --listen-addrs=/ip4/0.0.0.0/tcp/8070 \

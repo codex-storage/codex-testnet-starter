@@ -30,7 +30,7 @@ run_workshop() {
   ./codex-${VERSION}-${OS}-${ARCH} \
     --data-dir=${DATA_DIR} \
     --storage-quota=11811160064 \
-    --nat=${LOCALIP} \
+    --nat=extip:${LOCALIP} \
     --api-port=8080 \
     --disc-port=8090 \
     --listen-addrs=/ip4/0.0.0.0/tcp/8070 \
@@ -48,7 +48,7 @@ run_testnet() {
   ./codex-${VERSION}-${OS}-${ARCH} \
     --data-dir=${DATA_DIR} \
     --storage-quota=11811160064 \
-    --nat=${LOCALIP} \
+    --nat=extip:${LOCALIP} \
     --api-port=8080 \
     --disc-port=8090 \
     --listen-addrs=/ip4/0.0.0.0/tcp/8070 \

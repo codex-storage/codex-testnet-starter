@@ -87,14 +87,14 @@ Several configuration options must be set correctly, so the node knows how to co
 
 These options are required to join the testnet:
  - `--bootstrap-node=SPR` - Set SPR to one of the Codex Testnet bootstrap node SPRs found [here](https://docs.codex.storage/networks/testnet)
- - `--nat=IP` - Set IP to your public IP address. Using Docker? Skip this one.
+ - `--nat=extip:IP` - Set IP to your public IP address. Using Docker? Skip this one.
  - `--listen-addrs=ADDR` - Set ADDR to "/ip4/0.0.0.0/tcp/8070". Note: If you changed the TCP port in the port forwarding step previously, change it here as well.
  - `--disc-port=PORT` - Set PORT to 8090. Again: If you changed it in the forward, do the same thing here.
  - `persistence` - Tells the node we want to enable marketplace interactions.
  - `--eth-private-key=FILE` - Set FILE to your private key file.
  - `--eth-provider=URL` - Set URL to the "Geth Public RPC" found [here](https://docs.codex.storage/networks/testnet)
 The marketplace address should default to the correct testnet deployment. You can override it with:
- - `--marketplace-address=ADDR` - Set ADDR to `0xAB03b6a58C5262f530D54146DA2a552B1C0F7648`
+ - `--marketplace-address=ADDR` - Set ADDR to `0xfFaF679D5Cbfdd5Dbc9Be61C616ed115DFb597ed`
 
 The above options allow you to join the testnet, exchange data, and purchase storage in the network. If you wish to *sell storage space* to the network, you must include one additional argument:
  - `prover` - Tells the node we want to enable storage space selling

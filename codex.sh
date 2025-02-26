@@ -16,7 +16,7 @@ codex persistence \
   --metrics=true \
   --listen-addrs=/ip4/0.0.0.0/tcp/8070 \
   --disc-port=8090 \
-  --nat=$(curl https://ip.codex.storage) \
+  --nat=extip:$(curl https://ip.codex.storage) \
   --circuit-dir=./codex-data/circuits \
   --eth-private-key=eth.key \
   --eth-provider=https://rpc.testnet.codex.storage

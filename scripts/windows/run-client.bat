@@ -44,7 +44,7 @@ if errorlevel 1 (
 )
 
 :: Set variables
-set "VERSION=v0.1.9"
+set "VERSION=v0.2.0"
 set "OS=windows"
 call :get_arch ARCH
 set "DATA_DIR=data_client"
@@ -56,7 +56,7 @@ icacls %DATA_DIR% /grant:r %USERNAME%:(OI)(CI)F
 codex-%VERSION%-%OS%-%ARCH%.exe ^
     --data-dir=%DATA_DIR% ^
     --storage-quota=11811160064 ^
-    --nat=%LOCALIP% ^
+    --nat=extip:%LOCALIP% ^
     --api-port=8080 ^
     --disc-port=8090 ^
     --listen-addrs=/ip4/0.0.0.0/tcp/8070 ^
