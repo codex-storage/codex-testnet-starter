@@ -17,7 +17,7 @@ BOOTSPR=$(curl http://localhost:8078/api/codex/v1/spr | cut -d '"' -f4)
   persistence \
   --eth-private-key=eth.key \
   --eth-provider=https://rpc.testnet.codex.storage \
-  --marketplace-address=0xDB2908d724a15d05c0B6B8e8441a8b36E67476d3 \
+  --marketplace-address=0x7c7a749DE7156305E55775e7Ab3931abd6f7300E \
   prover \
   &
 
