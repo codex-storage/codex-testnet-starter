@@ -5,7 +5,7 @@ BOOTSPR=$(curl http://localhost:8078/api/codex/v1/spr | cut -d '"' -f4)
 # Quota = 11 GB
 # Availability = 10 GB
 
-./codex-prover-v0.1.3-linux-amd64 \
+./codex-prover-v0.2.4-linux-amd64 \
   --data-dir=data_host \
   --circuit-dir=circuit \
   --storage-quota=11811160064 \
@@ -17,7 +17,6 @@ BOOTSPR=$(curl http://localhost:8078/api/codex/v1/spr | cut -d '"' -f4)
   persistence \
   --eth-private-key=eth.key \
   --eth-provider=https://rpc.testnet.codex.storage \
-  --marketplace-address=0x7c7a749DE7156305E55775e7Ab3931abd6f7300E \
   prover \
   &
 
